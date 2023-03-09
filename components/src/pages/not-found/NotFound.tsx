@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './notfound.scss';
 
 function NotFound() {
   return (
     <>
-      <h1>Not Found</h1>
+      <h2>Not Found</h2>
       <Link to="/">GO HOME</Link>
     </>
   );
