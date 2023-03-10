@@ -18,7 +18,7 @@ const Layout = () => {
       </main>
 
       <footer className="footer">
-        <div className="footer__container">2023</div>
+        <div className="footer__container">All Rights Reserved © RS.REACT, 2023</div>
       </footer>
     </>
   );
