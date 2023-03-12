@@ -1,25 +1,10 @@
 import React from 'react';
-import Data from './../../data/mock_data.json';
-import { useState } from 'react';
+import './searchbar.scss';
 
 const SearchBar = () => {
-  const [query, setQuery] = useState('');
   return (
     <div>
-      <input placeholder="enter search..." onChange={(event) => setQuery(event.target.value)} />
-      {console.log(Data)}
-      {Data.filter((post) => {
-        if (query === '') {
-          return post;
-        } else if (post.first_name.toLowerCase().includes(query.toLowerCase())) {
-          return post;
-        }
-      }).map((post, index) => {
-        <div key={index}>
-          <p>{post.first_name}</p>
-          <p>{post.last_name}</p>
-        </div>;
-      })}
+      <input className="main__search" type="text" placeholder="enter search..." />
     </div>
   );
 };

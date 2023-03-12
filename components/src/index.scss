@@ -17,7 +17,6 @@ header,nav,main,footer,section,aside{display: block;}
 html,body{
    height: 100%;
    width: 100%;
-   // font-family: Montserrat, sans-serif;
    font-family: sans-serif;
    font-size: 16px;
    line-height: 1;
@@ -65,7 +64,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
       position: relative;
       &:after {
          position: absolute;
-         // bottom: -25px;
          left: 0;
          content: "";
          display: block;
@@ -81,7 +79,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
          width: 100%;
       }
       &:not(:last-child) {
-         margin: 0 20px 0 0;
+         margin: 0 2rem 0 0;
       }
    }
 }
@@ -92,11 +90,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
    top: 0;
    flex: 1 1 auto;
    padding: 11px 0;
-   &__title {
-      text-align: center;
-      font-size: 21px;
-      font-weight: 700;
-   }
 }
 
 .footer {
