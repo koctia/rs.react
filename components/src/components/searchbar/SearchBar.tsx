@@ -3,7 +3,7 @@ import './searchbar.scss';
 
 const SearchBar = () => {
   return (
-    <div>
+    <div className="main__search-input">
       <input className="main__search" type="text" placeholder="enter search..." />
     </div>
   );

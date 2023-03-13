@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { ICardData } from '../../interface/card';
 
-const Card = (props: ICardData) => {
-  console.log(props);
-  return <div>Card</div>;
-};
+class Card extends Component<ICardData> {
+  render() {
+    // console.log(this.props.id);
+    return (
+      <>
+        <div>
+          <div>{this.props.first_name}</div>
+          <div>{this.props.last_name}</div>
+        </div>
+      </>
+    );
+  }
+}
 
-export { Card };
+export default Card;
