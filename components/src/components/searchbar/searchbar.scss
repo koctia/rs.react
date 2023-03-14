@@ -1,5 +1,6 @@
 .main {
   &__search-input {
+    display: flex;
     position: relative;
     &::before {
       font-family: "DesignIcons";
@@ -20,9 +21,23 @@
     border-radius: 4px;
     background-color: transparent;
     transition: all 0.3s ease-in;
-    margin: 0 0 1rem 0;
+    margin: 0 .5rem 1rem 0;
     &:focus {
         border-color: #3e505b;
+    }
+  }
+  &__search-btn {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    height: 2.4rem;
+    background: #d3d4d5;
+    border: 2px solid #d5d6d7;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      background: #ffffff;
+      border-color: #3e505b;
     }
   }
 }

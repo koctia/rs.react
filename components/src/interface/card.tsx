@@ -5,5 +5,6 @@ export interface ICardData {
   email?: string;
   gender?: string;
   ip_address?: string;
+  cost?: number;
   url_l?: string;
 }

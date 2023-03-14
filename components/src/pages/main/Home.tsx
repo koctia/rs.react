@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchBar } from '../../components/searchbar/SearchBar';
+import SearchBar from '../../components/searchbar/SearchBar';
 import Card from '../../components/card/Card';
 import MockData from '../../data/mock_data.json';
 import { ICardData } from '../../interface/card';
