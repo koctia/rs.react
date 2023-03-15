@@ -1,22 +1,30 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+// import { Breadcrumb } from '../components/Breadcrumbs';
 
 const setActiveLink = ({ isActive }: { isActive: boolean }) =>
   isActive ? 'header__active-link' : '';
 
 const Layout = () => {
+  // const status = {
+  //   name: 'Home',
+  // };
+  // console.log();
+
   return (
     <>
       <header className="header">
         <div className="header__container">
           <nav className="header__nav">
-            <NavLink to="/" className={setActiveLink}>
+            <NavLink to="/" onClick={() => console.log('Home')} className={setActiveLink}>
               Home
             </NavLink>
-            <NavLink to="/about" className={setActiveLink}>
+            <NavLink to="/about" onClick={() => console.log('About')} className={setActiveLink}>
               About
             </NavLink>
           </nav>
+          {/* <Breadcrumbs {...status} /> */}
+          {/* <Breadcrumb /> */}
         </div>
       </header>
 

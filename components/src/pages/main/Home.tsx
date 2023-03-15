@@ -12,9 +12,11 @@ function Home() {
       <SearchBar />
 
       <h2 className="main__title-card">Карточки</h2>
-      {MockData.map((data: ICardData) => {
-        return <Card key={data.id} {...data} />;
-      })}
+      <div className="main__cards cards">
+        {MockData.map((data: ICardData) => {
+          return <Card key={data.id} {...data} />;
+        })}
+      </div>
     </>
   );
 }
