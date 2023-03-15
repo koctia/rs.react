@@ -1,13 +1,22 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
+
+const setActiveLink = ({ isActive }: { isActive: boolean }) =>
+  isActive ? 'header__active-link' : '';
 
 const Layout = () => {
   return (
     <>
       <header className="header">
         <div className="header__container">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
+          <nav className="header__nav">
+            <NavLink to="/" className={setActiveLink}>
+              Home
+            </NavLink>
+            <NavLink to="/about" className={setActiveLink}>
+              About
+            </NavLink>
+          </nav>
         </div>
       </header>
 

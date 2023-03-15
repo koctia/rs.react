@@ -68,6 +68,10 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
    color: #ffffff;
    text-align: center;
    padding: 20px 0;
+   &__active-link {
+      color: #f17c00;
+   }
+   &__nav {}
    & a {
       position: relative;
       &:after {

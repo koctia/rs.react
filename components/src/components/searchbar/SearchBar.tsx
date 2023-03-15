@@ -7,7 +7,6 @@ class SearchBar extends Component<ISearchBar, { data: string }> {
     const valueInput: Element = event.target;
     if (valueInput instanceof HTMLInputElement) {
       this.setState({ data: valueInput.value });
-      // localStorage.setItem('rssearch', valueInput.value);
     }
   }
 
