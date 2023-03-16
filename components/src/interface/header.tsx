@@ -1,3 +1,3 @@
 export interface IHeaderName {
-  name: string;
+  name?: string;
 }
