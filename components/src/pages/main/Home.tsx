@@ -8,7 +8,7 @@ import './home.scss';
 function Home() {
   return (
     <>
-      <h2 className="main__title">Home</h2>
+      <h1 className="main__title">Home</h1>
       <SearchBar />
 
       <h2 className="main__title-card">Карточки</h2>
