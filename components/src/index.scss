@@ -68,6 +68,15 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
    color: #ffffff;
    text-align: center;
    padding: 20px 0;
+   &__box {
+      display: flex;
+      align-items: center;
+   }
+   &__header-name {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 8rem 0 0;
+   }
    &__active-link {
       color: #f17c00;
    }

@@ -8,9 +8,7 @@ import './home.scss';
 function Home() {
   return (
     <>
-      <h1 className="main__title">Home</h1>
       <SearchBar />
-
       <h2 className="main__title-card">Карточки</h2>
       <div className="main__cards cards">
         {MockData.map((data: ICardData) => {
