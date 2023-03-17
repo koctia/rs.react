@@ -27,6 +27,7 @@ class SearchBar extends Component<ISearchBar, { data: string }> {
       <div className="main__search-input">
         <input
           className="main__search"
+          data-testid="search-input"
           type="search"
           placeholder="enter search..."
           onChange={(event) => this.dataSearch(event)}

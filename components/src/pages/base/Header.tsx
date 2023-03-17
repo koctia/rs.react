@@ -14,9 +14,16 @@ class Header extends Component<IHeaderName, { name: string }> {
   }
 
   componentDidMount() {
-    if (location.pathname === '/') this.setState({ name: 'Home' });
-    else if (location.pathname === '/about') this.setState({ name: 'About' });
-    else this.setState({ name: '' });
+    switch (location.pathname) {
+      case '/':
+        this.setState({ name: 'Home' });
+        break;
+      case '/about':
+        this.setState({ name: 'About' });
+        break;
+      default:
+        this.setState({ name: '' });
+    }
   }
 
   render() {
@@ -27,6 +34,7 @@ class Header extends Component<IHeaderName, { name: string }> {
             <h2 className="header__header-name">{this.state.name}</h2>
             <nav className="header__nav">
               <NavLink
+                data-testid="home-link"
                 to="/"
                 onClick={() => this.setState({ name: 'Home' })}
                 className={setActiveLink}
@@ -34,6 +42,7 @@ class Header extends Component<IHeaderName, { name: string }> {
                 Home
               </NavLink>
               <NavLink
+                data-testid="about-link"
                 to="/about"
                 onClick={() => this.setState({ name: 'About' })}
                 className={setActiveLink}

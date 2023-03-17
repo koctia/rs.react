@@ -9,7 +9,9 @@ function Home() {
   return (
     <>
       <SearchBar />
-      <h2 className="main__title-card">Карточки</h2>
+      <h2 className="main__title-card" data-testid="home-page">
+        The cards
+      </h2>
       <div className="main__cards cards">
         {MockData.map((data: ICardData) => {
           return <Card key={data.id} {...data} />;
