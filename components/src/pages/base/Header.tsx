@@ -14,6 +14,7 @@ class Header extends Component<IHeaderName, { name: string }> {
   }
 
   componentDidMount() {
+    console.log(location.pathname);
     switch (location.pathname) {
       case '/':
         this.setState({ name: 'Home' });
@@ -22,7 +23,7 @@ class Header extends Component<IHeaderName, { name: string }> {
         this.setState({ name: 'About' });
         break;
       default:
-        this.setState({ name: '' });
+        this.setState({ name: 'Not Page' });
     }
   }
 

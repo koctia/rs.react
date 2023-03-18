@@ -4,6 +4,7 @@ import './about.scss';
 function About() {
   return (
     <>
+      <h2 className="main__title-about">About</h2>
       <div className="main__stih" data-testid="about-page">
         <p>Once upon a time there was a tail,</p>
         <p>He had a cat,</p>
