@@ -1,0 +1,176 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*::before,
+*::after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+header,
+nav,
+main,
+footer,
+section,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  color: #495057;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  background: #fff;
+}
+
+a,
+input,
+button,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+ul,
+ol,
+li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+@font-face {
+  font-family: 'DesignIcons';
+  font-display: swap;
+  src: url('./../fonts/MaterialDesignIcons.woff2') format('woff2'),
+    url('./../fonts/MaterialDesignIcons.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+[class*='__container'] {
+  max-width: 1400px;
+  padding: 0 15px;
+  margin: 0 auto;
+  box-sizing: content-box;
+}
+
+.header {
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: #3e505b;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px 0;
+  &__box {
+    display: flex;
+    align-items: center;
+  }
+  &__header-name {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 8rem 0 0;
+  }
+  &__active-link {
+    color: #f17c00;
+  }
+  &__nav {
+  }
+  & a {
+    position: relative;
+    &:after {
+      position: absolute;
+      left: 0;
+      content: '';
+      display: block;
+      width: 0%;
+      height: 1px;
+      background-color: #f17c00;
+      -webkit-transition: width 0.3s ease-in-out;
+      -moz--transition: width 0.3s ease-in-out;
+      transition: width 0.3s ease-in-out;
+    }
+    &:hover:after,
+    &:focus:after {
+      width: 100%;
+    }
+    &:not(:last-child) {
+      margin: 0 2rem 0 0;
+    }
+  }
+}
+
+.main {
+  width: 100%;
+  left: 0;
+  top: 0;
+  flex: 1 1 auto;
+  padding: 11px 0;
+}
+
+.footer {
+  width: 100%;
+  left: 0;
+  top: 0;
+  font-size: 14px;
+  background: #3e505b;
+  color: #ffffff;
+  text-align: center;
+  padding: 11px 0;
+}
