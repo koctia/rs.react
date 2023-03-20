@@ -13,8 +13,7 @@ class Header extends Component<IHeaderName, { name: string }> {
     };
   }
 
-  componentDidMount() {
-    console.log(location.pathname);
+  componentDidMount() {    
     switch (location.pathname) {
       case '/':
         this.setState({ name: 'Home' });
