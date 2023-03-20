@@ -3,13 +3,13 @@
     display: flex;
     position: relative;
     &::before {
-      font-family: "DesignIcons";
+      font-family: 'DesignIcons';
       content: '\F0349';
       position: absolute;
       top: 7px;
       left: 9px;
       font-size: 24px;
-      opacity: .5 ;
+      opacity: 0.5;
     }
   }
   &__search {
@@ -21,9 +21,9 @@
     border-radius: 4px;
     background-color: transparent;
     transition: all 0.3s ease-in;
-    margin: 0 .5rem 1rem 0;
+    margin: 0 0.5rem 1rem 0;
     &:focus {
-        border-color: #3e505b;
+      border-color: #3e505b;
     }
   }
   &__search-btn {
