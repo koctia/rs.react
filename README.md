@@ -4,6 +4,11 @@
 
 [task](https://github.com/rolling-scopes-school/tasks/tree/master/react/modules/module01)
 
+Clone the project to yourself
+```
+git clone <name project>
+```
+
 After clone do not forget to switch to the components branch
 ```
 git checkout components
