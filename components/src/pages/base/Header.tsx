@@ -21,6 +21,9 @@ class Header extends Component<IHeaderName, { name: string }> {
       case '/about':
         this.setState({ name: 'About' });
         break;
+      case '/form':
+        this.setState({ name: 'Form' });
+        break;
       default:
         this.setState({ name: 'Not Page' });
     }
@@ -49,6 +52,14 @@ class Header extends Component<IHeaderName, { name: string }> {
               >
                 About
               </NavLink>
+              <NavLink
+                data-testid="form-link"
+                to="/form"
+                onClick={() => this.setState({ name: 'Form' })}
+                className={setActiveLink}
+              >
+                Form
+              </NavLink>
             </nav>
           </div>
         </div>
@@ -57,4 +68,4 @@ class Header extends Component<IHeaderName, { name: string }> {
   }
 }
 
-export default Header;
+export { Header };

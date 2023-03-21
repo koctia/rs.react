@@ -26,4 +26,4 @@ class Card extends Component<ICardData> {
   }
 }
 
-export default Card;
+export { Card };

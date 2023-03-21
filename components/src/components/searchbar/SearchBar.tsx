@@ -38,4 +38,4 @@ class SearchBar extends Component<ISearchBar, { data: string }> {
   }
 }
 
-export default SearchBar;
+export { SearchBar };
