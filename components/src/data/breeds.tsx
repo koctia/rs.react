@@ -1,6 +1,6 @@
 import { IBreedsData } from '../interface/breeds';
 
-export const breedsData: Array<IBreedsData> = [
+export const Data: Array<IBreedsData> = [
   {
     breed: 1,
     name: 'Abyssinian',

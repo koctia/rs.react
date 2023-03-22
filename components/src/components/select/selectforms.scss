@@ -1,0 +1,22 @@
+.main {
+   &__form-breeds {
+      display: flex;
+      flex-direction: column;
+      margin: 0 0 21px 0;
+      & label {
+         font-weight: 500;
+         font-size: 12px;
+         line-height: 166%;
+         color: rgba(73, 80, 87, 0.6);
+      }
+   }
+   &__form-select {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 150%;
+      color: rgba(73, 80, 87, 0.87);
+      background: inherit;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+      padding: 5px 0;
+   }
+}

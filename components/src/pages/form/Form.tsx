@@ -68,6 +68,7 @@ class Form extends Component {
               placeholder="enter birthday"
               ref={this.birthday}
             />
+            <SelectForms id="breeds" label="breed" ref={this.breeds} />
 
             <input type="submit" value="submit" />
           </form>
