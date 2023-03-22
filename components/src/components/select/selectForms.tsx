@@ -11,7 +11,7 @@ const SelectForms = forwardRef<HTMLSelectElement, IPropsType>(({ id, label, ...p
   return (
     <div className="main__form-breeds">
       <select className="main__form-select" id={id} ref={ref} {...props}>
-        <option value="">choose a breed</option>
+        <option value="">-- choose a breed --</option>
         {Data.map((item) => {
           return (
             <option key={item.breed} value={item.breed}>
