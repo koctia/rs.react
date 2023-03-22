@@ -19,7 +19,8 @@
     transition: all 0.3s ease-in;
     padding: 5px 0;
     &:focus {
-      border-color: #3e505b;
+      // border-color: #3e505b;
+      border-color: #f17c00;
     }
   }
 }
