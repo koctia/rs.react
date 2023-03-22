@@ -1,0 +1,15 @@
+.main {
+  &__title-form {
+    text-align: center;
+    font-size: 21px;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+  }
+  &__form-box {
+    display: flex;
+    justify-content: center;
+  }
+  &__form {
+    width: 60%;
+  }
+}
