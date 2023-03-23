@@ -7,4 +7,8 @@ export interface ICardData {
   ip_address?: string;
   cost?: number;
   url_l?: string;
+  birthday?: string;
+  breeds?: string;
+  place?: string;
+  upload?: string;
 }

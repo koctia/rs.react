@@ -10,7 +10,7 @@ const SelectForms = forwardRef<HTMLSelectElement, IPropsType>(({ id, label, ...p
         <option value=""></option>
         {Data.map((item) => {
           return (
-            <option key={item.breed} value={item.breed}>
+            <option key={item.breed} value={item.name}>
               {item.name}
             </option>
           );
