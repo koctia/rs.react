@@ -1,12 +1,6 @@
 import React, { forwardRef } from 'react';
 import './inputforms.scss';
-
-interface IPropsType {
-  id: string;
-  label: string;
-  type: string;
-  placeholder: string;
-}
+import { IPropsType } from '../../interface/forms';
 
 const InputForms = forwardRef<HTMLInputElement, IPropsType>(({ id, label, ...props }, ref) => {
   return (

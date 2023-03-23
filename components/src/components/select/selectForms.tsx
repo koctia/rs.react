@@ -1,11 +1,7 @@
 import React, { forwardRef } from 'react';
 import './selectforms.scss';
 import { Data } from '../../data/breeds';
-
-interface IPropsType {
-  id: string;
-  label: string;
-}
+import { IPropsType } from '../../interface/forms';
 
 const SelectForms = forwardRef<HTMLSelectElement, IPropsType>(({ id, label, ...props }, ref) => {
   return (
