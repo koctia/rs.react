@@ -63,7 +63,7 @@ class Form extends Component {
       breeds: this.breeds.current?.value,
       gender: this.switcher.current?.checked ? 'Female' : 'Male',
       place: this.placeCat(),
-      upload: this.uploadImages(),
+      url_l: this.uploadImages(),
     };
     const newArray: ICardData[] = [...this.state.cards];
     newArray.push(newCard);
@@ -151,7 +151,7 @@ class Form extends Component {
             <input className="main__btn-submit" type="submit" value="submit" />
           </form>
         </div>
-        <div className="main__load-cards">
+        <div className="main__cards cards">
           {this.state.cards.map((data) => {
             return <Card key={data.id} {...data} />;
           })}
