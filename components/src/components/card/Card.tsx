@@ -18,6 +18,8 @@ class Card extends Component<ICardData> {
           <div className="cards__first-name">{this.props.first_name}</div>
           <div className="cards__last-name">{this.props.last_name}</div>
         </div>
+        <div className="cards__birthday">{this.props.birthday}</div>
+        <div className="cards__breeds">{this.props.breeds}</div>
         <div className="cards__gender">{this.props.gender}</div>
         <div className="cards__cost">{this.props.cost}</div>
         <div className="cards__email">{this.props.email}</div>
