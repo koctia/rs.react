@@ -12,7 +12,7 @@ import { Card } from '../../components/card/Card';
 
 interface IFormsParameters {
   cards: ICardData[];
-  errors: [];
+  errors: ICardData;
 }
 
 class Form extends Component {
@@ -27,6 +27,7 @@ class Form extends Component {
   private breeder: RefObject<HTMLInputElement>;
   private other: RefObject<HTMLInputElement>;
   private upload: RefObject<HTMLInputElement>;
+  private email: RefObject<HTMLInputElement>;
   private form: RefObject<HTMLFormElement>;
   state: IFormsParameters;
 
@@ -34,7 +35,7 @@ class Form extends Component {
     super(props);
     this.state = {
       cards: [],
-      errors: [],
+      errors: {},
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.namecat = createRef();
@@ -48,6 +49,7 @@ class Form extends Component {
     this.breeder = createRef();
     this.other = createRef();
     this.upload = createRef();
+    this.email = createRef();
     this.form = createRef();
   }
 
@@ -64,8 +66,8 @@ class Form extends Component {
         gender: this.gender.current?.checked ? 'Female' : 'Male',
         place: this.placeCat(),
         url_l: this.uploadImages(),
+        email: this.email.current?.value,
       };
-      // console.log('isgender', this.isgender.current?.checked);
       const newArray: ICardData[] = [...this.state.cards];
       newArray.push(newCard);
       this.setState({ cards: newArray });
@@ -84,14 +86,78 @@ class Form extends Component {
   private uploadImages() {
     let file = '';
     if (this.upload.current?.files) {
-      const arrData = [...[...this.upload.current.files]];
+      const arrData = [...this.upload.current.files];
       arrData.forEach((item) => (file = URL.createObjectURL(item)));
     }
     return file;
   }
 
   validate() {
-    const isValidate = true;
+    const errors: ICardData = {};
+    let isValidate = true;
+
+    if (this.namecat.current?.value === '') {
+      isValidate = false;
+      errors['first_name'] = 'Please enter name.';
+    }
+    if (typeof errors['first_name'] === 'undefined') {
+      const word: string | undefined = this.namecat.current?.value;
+      if (word!.charAt(0) !== word!.charAt(0).toUpperCase()) {
+        isValidate = false;
+        errors['first_name'] = 'Please capitalize the name.';
+      }
+    }
+    if (this.surname.current?.value === '') {
+      isValidate = false;
+      errors['last_name'] = 'Please enter surname.';
+    }
+    if (typeof errors['last_name'] === 'undefined') {
+      const word: string | undefined = this.surname.current?.value;
+      if (word!.charAt(0) !== word!.charAt(0).toUpperCase()) {
+        isValidate = false;
+        errors['last_name'] = 'Please capitalize the surname.';
+      }
+    }
+    if (this.birthday.current?.value === '') {
+      isValidate = false;
+      errors['birthday'] = 'Please enter birthday.';
+    }
+    if (this.breeds.current?.value === '') {
+      isValidate = false;
+      errors['breeds'] = 'Please enter breeds.';
+    }
+    if (!this.isgender.current?.checked) {
+      isValidate = false;
+      errors['gender'] = 'Please enter gender.';
+    }
+    if (Number(this.cost.current?.value) < 1) {
+      isValidate = false;
+      errors['coststr'] = 'Please enter a valid price value.';
+    }
+    if (this.placeCat() === '') {
+      isValidate = false;
+      errors['place'] = 'Please select type.';
+    }
+    if (this.uploadImages() === '') {
+      isValidate = false;
+      errors['url_l'] = 'Please select files.';
+    }
+    if (this.email.current?.value === '') {
+      isValidate = false;
+      errors['email'] = 'Please enter email.';
+    }
+    if (typeof errors['email'] === 'undefined') {
+      const mailFormat =
+        /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+      if (!mailFormat.test(this.email.current!.value)) {
+        isValidate = false;
+        errors['email'] = 'Please enter valid email address.';
+      }
+    }
+    this.setState({
+      errors: errors,
+    });
+
     return isValidate;
   }
 
@@ -106,6 +172,7 @@ class Form extends Component {
               label="name"
               type="text"
               placeholder="enter first name"
+              error={this.state.errors.first_name}
               ref={this.namecat}
             />
             <InputForms
@@ -113,6 +180,7 @@ class Form extends Component {
               label="surname"
               type="text"
               placeholder="enter surname"
+              error={this.state.errors.last_name}
               ref={this.surname}
             />
             <InputForms
@@ -120,16 +188,29 @@ class Form extends Component {
               label="birthday"
               type="date"
               placeholder="enter birthday"
+              error={this.state.errors.birthday}
               ref={this.birthday}
             />
-            <SelectForms id="breed" label="breed" ref={this.breeds} />
+            <SelectForms
+              id="breed"
+              label="breed"
+              error={this.state.errors.breeds}
+              ref={this.breeds}
+            />
             <SwitchForms id="gender" label="" type="checkbox" ref={this.gender} />
-            <CheckboxForms id="isgender" label="gender" type="checkbox" ref={this.isgender} />
+            <CheckboxForms
+              id="isgender"
+              label="gender"
+              type="checkbox"
+              error={this.state.errors.gender}
+              ref={this.isgender}
+            />
             <InputForms
               id="cost"
               label="cost"
               type="number"
               placeholder="enter cost"
+              error={this.state.errors.coststr}
               ref={this.cost}
             />
             <div className="main__form-radios">
@@ -157,9 +238,25 @@ class Form extends Component {
                 value="Other"
                 ref={this.other}
               />
-              <label className="radios-label">from</label>
+              <label className="radios-label">
+                from <span className="error-block">{this.state.errors.place}</span>
+              </label>
             </div>
-            <LoaderForms id="upload" type="file" ref={this.upload} />
+            <LoaderForms
+              id="upload"
+              type="file"
+              error={this.state.errors.url_l}
+              ref={this.upload}
+            />
+            <InputForms
+              id="email"
+              label="email"
+              type="text"
+              placeholder="enter email"
+              error={this.state.errors.email}
+              ref={this.email}
+            />
+
             <input className="main__btn-submit" type="submit" value="submit" />
           </form>
         </div>

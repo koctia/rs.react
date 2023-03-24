@@ -3,9 +3,9 @@ import './loader.scss';
 
 import { IPropsType } from '../../interface/forms';
 
-const LoaderForms = forwardRef<HTMLInputElement, IPropsType>(({ id, ...props }, ref) => {
+const LoaderForms = forwardRef<HTMLInputElement, IPropsType>(({ id, error, ...props }, ref) => {
   return (
-    <div>
+    <div className="main__loader-box">
       <label className="main__loader-label" htmlFor={id}>
         <span className="main__loader-span">Выберите файл</span>
         <input
@@ -17,6 +17,9 @@ const LoaderForms = forwardRef<HTMLInputElement, IPropsType>(({ id, ...props }, 
           ref={ref}
         />
       </label>
+      <div className="main__loader-error">
+        <span className="error-block">{error}</span>
+      </div>
     </div>
   );
 });
