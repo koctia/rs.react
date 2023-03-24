@@ -11,6 +11,7 @@ import { ICardData } from '../../interface/card';
 import { Card } from '../../components/card/Card';
 
 interface IFormsParameters {
+  info: boolean;
   cards: ICardData[];
   errors: ICardData;
 }
@@ -34,6 +35,7 @@ class Form extends Component {
   constructor(props: IFormsParameters) {
     super(props);
     this.state = {
+      info: false,
       cards: [],
       errors: {},
     };
@@ -72,6 +74,10 @@ class Form extends Component {
       newArray.push(newCard);
       this.setState({ cards: newArray });
       this.form.current?.reset();
+      this.setState({
+        info: true,
+      });
+      setTimeout(() => this.setState({ info: false }), 3000);
     }
   }
 
@@ -165,6 +171,7 @@ class Form extends Component {
     return (
       <>
         <h2 className="main__title-form">Forms</h2>
+        {this.state.info ? <div className="main__form-info">The data has been saved</div> : ''}
         <div className="main__form-box">
           <form className="main__form" onSubmit={this.handleSubmit} ref={this.form}>
             <InputForms

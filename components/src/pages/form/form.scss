@@ -5,6 +5,14 @@
     font-weight: 700;
     margin: 0 0 1rem 0;
   }
+  &__form-info {
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+    color: coral;
+    transition: all 0.3s ease-in;
+    margin: 0 0 1rem 0;
+  }
   &__form-box {
     display: flex;
     justify-content: center;

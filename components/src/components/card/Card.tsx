@@ -22,6 +22,7 @@ class Card extends Component<ICardData> {
         <div className="cards__breeds">{this.props.breeds}</div>
         <div className="cards__gender">{this.props.gender}</div>
         <div className="cards__cost">{this.props.cost}</div>
+        <div className="cards__place">{this.props.place}</div>
         <div className="cards__email">{this.props.email}</div>
       </div>
     );
