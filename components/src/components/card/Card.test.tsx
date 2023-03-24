@@ -2,7 +2,7 @@ import React from 'react';
 import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import Card from './Card';
+import { Card } from './Card';
 import Data from '../../data/mock_data.json';
 
 describe('Item card', () => {

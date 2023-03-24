@@ -55,4 +55,31 @@
       content: 'contact: ';
     }
   }
+  &__birthday {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    &::before {
+      content: 'birthday: ';
+      font-weight: 400;
+    }
+  }
+  &__breeds {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    &::before {
+      content: 'breed: ';
+      font-weight: 400;
+    }
+  }
+  &__from {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    &::before {
+      content: 'from: ';
+      font-weight: 400;
+    }
+  }
 }

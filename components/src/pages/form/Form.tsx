@@ -5,36 +5,27 @@ import { SelectForms } from '../../components/select/selectForms';
 import { SwitchForms } from '../../components/switch/Switch';
 import { RadiosForms } from '../../components/radios/Radios';
 import { LoaderForms } from '../../components/loader/Loader';
+import { CheckboxForms } from '../../components/checkbox/Checkbox';
 
 import { ICardData } from '../../interface/card';
-import { Card } from '../../components/card/Card';
+import { CardForms } from '../../components/card/CardForms';
 
 interface IFormsParameters {
   cards: ICardData[];
 }
-
-// type CardType = {
-//   firstName: string | undefined;
-//   surname: string | undefined;
-//   birthday: string | undefined;
-//   breeds: string | undefined;
-//   switcher: boolean | undefined;
-//   nursery: string | undefined;
-//   breeder: string | undefined;
-//   other: string | undefined;
-//   upload: string | undefined;
-// };
 
 class Form extends Component {
   private namecat: RefObject<HTMLInputElement>;
   private surname: RefObject<HTMLInputElement>;
   private birthday: RefObject<HTMLInputElement>;
   private breeds: RefObject<HTMLSelectElement>;
-  private switcher: RefObject<HTMLInputElement>;
+  private gender: RefObject<HTMLInputElement>;
+  private isgender: RefObject<HTMLInputElement>;
   private nursery: RefObject<HTMLInputElement>;
   private breeder: RefObject<HTMLInputElement>;
   private other: RefObject<HTMLInputElement>;
   private upload: RefObject<HTMLInputElement>;
+  private form: RefObject<HTMLFormElement>;
   state: IFormsParameters;
 
   constructor(props: IFormsParameters) {
@@ -47,11 +38,13 @@ class Form extends Component {
     this.surname = createRef();
     this.birthday = createRef();
     this.breeds = createRef();
-    this.switcher = createRef();
+    this.gender = createRef();
+    this.isgender = createRef();
     this.nursery = createRef();
     this.breeder = createRef();
     this.other = createRef();
     this.upload = createRef();
+    this.form = createRef();
   }
 
   private handleSubmit(event: { preventDefault: () => void }) {
@@ -61,13 +54,15 @@ class Form extends Component {
       last_name: this.surname.current?.value,
       birthday: this.birthday.current?.value,
       breeds: this.breeds.current?.value,
-      gender: this.switcher.current?.checked ? 'Female' : 'Male',
+      gender: this.gender.current?.checked ? 'Female' : 'Male',
       place: this.placeCat(),
       url_l: this.uploadImages(),
     };
+    console.log('isgender', this.isgender.current?.checked);
     const newArray: ICardData[] = [...this.state.cards];
     newArray.push(newCard);
     this.setState({ cards: newArray });
+    // this.form.current?.reset();
     event.preventDefault();
   }
 
@@ -89,14 +84,12 @@ class Form extends Component {
   }
 
   render() {
-    console.log(this.state);
-    // inclued price
-    // inclued checked after upload button
+    console.log('state', this.state);
     return (
       <>
         <h2 className="main__title-form">Forms</h2>
         <div className="main__form-box">
-          <form className="main__form" onSubmit={this.handleSubmit}>
+          <form className="main__form" onSubmit={this.handleSubmit} ref={this.form}>
             <InputForms
               id="namecat"
               label="name"
@@ -119,7 +112,9 @@ class Form extends Component {
               ref={this.birthday}
             />
             <SelectForms id="breed" label="breed" ref={this.breeds} />
-            <SwitchForms id="switcher" label="gender" type="checkbox" ref={this.switcher} />
+            <SwitchForms id="gender" label="" type="checkbox" ref={this.gender} />
+            <CheckboxForms id="isgender" label="gender" type="checkbox" ref={this.isgender} />
+
             <div className="main__form-radios">
               <RadiosForms
                 id="radio1"
@@ -145,7 +140,7 @@ class Form extends Component {
                 value="Other"
                 ref={this.other}
               />
-              <label className="radios-label">Place</label>
+              <label className="radios-label">from</label>
             </div>
             <LoaderForms id="upload" type="file" ref={this.upload} />
             <input className="main__btn-submit" type="submit" value="submit" />
@@ -153,7 +148,7 @@ class Form extends Component {
         </div>
         <div className="main__cards cards">
           {this.state.cards.map((data) => {
-            return <Card key={data.id} {...data} />;
+            return <CardForms key={data.id} {...data} />;
           })}
         </div>
       </>

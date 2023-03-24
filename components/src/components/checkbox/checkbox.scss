@@ -1,0 +1,19 @@
+.main {
+  &__form-checkbox {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 18px 0;
+    & label {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 166%;
+      color: rgba(73, 80, 87, 0.6);
+    }
+  }
+  &__form-checkblock {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  &__check-input {}
+}
