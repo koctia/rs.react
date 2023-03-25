@@ -1,7 +1,7 @@
 import React, { Component, createRef, RefObject } from 'react';
 import './form.scss';
 import { InputForms } from '../../components/input/InputForms';
-import { SelectForms } from '../../components/select/selectForms';
+import { SelectForms } from '../../components/select/SelectForms';
 import { SwitchForms } from '../../components/switch/Switch';
 import { RadiosForms } from '../../components/radios/Radios';
 import { LoaderForms } from '../../components/loader/Loader';

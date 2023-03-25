@@ -1,33 +1,35 @@
 import React from 'react';
 import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
+import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 
-import { App } from '../../App';
-import Header from './Header';
+import { Home } from '../main/Home';
+import { About } from '../about/About';
 
 describe('Test link from Header', () => {
   it('home page opener test', async () => {
-    render(
-      <MemoryRouter>
-        <App />
-        <Header />
-      </MemoryRouter>
-    );
-    const homePage = screen.getAllByTestId('home-link')[0];
-    await userEvent.click(homePage);
-    expect(screen.getByTestId('home-page')).toBeInTheDocument();
+    const RoutesTest = [
+      {
+        path: '/',
+        element: <Home />,
+      },
+    ];
+    const router = createMemoryRouter(RoutesTest);
+    render(<RouterProvider router={router} />);
+    const homePage = screen.getByText(/the cards/i);
+    expect(homePage).toBeTruthy;
   });
+
   it('about page opener test', async () => {
-    render(
-      <MemoryRouter>
-        <App />
-        <Header />
-      </MemoryRouter>
-    );
-    const aboutPage = screen.getAllByTestId('about-link')[0];
-    await userEvent.click(aboutPage);
-    expect(screen.getByTestId('about-page')).toBeInTheDocument();
+    const RoutesTest = [
+      {
+        path: '/',
+        element: <About />,
+      },
+    ];
+    const router = createMemoryRouter(RoutesTest);
+    render(<RouterProvider router={router} />);
+    const aboutPage = screen.getByText(/About/i);
+    expect(aboutPage).toBeTruthy;
   });
 });

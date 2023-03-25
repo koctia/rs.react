@@ -7,7 +7,7 @@ const LoaderForms = forwardRef<HTMLInputElement, IPropsType>(({ id, error, ...pr
   return (
     <div className="main__loader-box">
       <label className="main__loader-label" htmlFor={id}>
-        <span className="main__loader-span">Выберите файл</span>
+        <span className="main__loader-span">Upload File</span>
         <input
           className="main__loader-file"
           id={id}

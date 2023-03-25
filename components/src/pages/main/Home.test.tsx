@@ -2,7 +2,7 @@ import React from 'react';
 import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import Home from './Home';
+import { Home } from './Home';
 import Data from '../../data/mock_data.json';
 
 describe('Home component', () => {

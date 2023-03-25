@@ -3,7 +3,7 @@ import { describe, it } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import SearchBar from './SearchBar';
+import { SearchBar } from './SearchBar';
 
 describe('search bar', () => {
   it('input value space', () => {
