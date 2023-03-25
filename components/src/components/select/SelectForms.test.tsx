@@ -3,7 +3,7 @@ import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
 import { SelectForms } from './SelectForms';
-import userEvent from "@testing-library/user-event";
+import userEvent from '@testing-library/user-event';
 
 describe('SelectForms', () => {
   it('should choose option', () => {

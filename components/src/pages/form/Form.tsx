@@ -179,7 +179,12 @@ class Form extends Component {
         <h2 className="main__title-form">Forms</h2>
         {this.state.info ? <div className="main__form-info">The data has been saved</div> : ''}
         <div className="main__form-box">
-          <form className="main__form" onSubmit={this.handleSubmit} ref={this.form}>
+          <form
+            className="main__form"
+            onSubmit={this.handleSubmit}
+            ref={this.form}
+            aria-label="form add card"
+          >
             <InputForms
               id="namecat"
               label="name"
