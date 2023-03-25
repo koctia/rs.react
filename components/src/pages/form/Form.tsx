@@ -128,6 +128,12 @@ class Form extends Component {
       isValidate = false;
       errors['birthday'] = 'Please enter birthday.';
     }
+    if (typeof errors['birthday'] === 'undefined') {
+      if (Date.parse(`${this.birthday.current?.value}`) > Date.now()) {
+        isValidate = false;
+        errors['birthday'] = 'Please enter the correct date.';
+      }
+    }
     if (this.breeds.current?.value === '') {
       isValidate = false;
       errors['breeds'] = 'Please enter breeds.';
