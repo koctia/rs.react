@@ -177,7 +177,7 @@ class Form extends Component {
     return (
       <>
         <h2 className="main__title-form">Forms</h2>
-        {this.state.info ? <div className="main__form-info">The data has been saved</div> : ''}
+        {this.state.info && <div className="main__form-info">The data has been saved</div>}
         <div className="main__form-box">
           <form
             className="main__form"
