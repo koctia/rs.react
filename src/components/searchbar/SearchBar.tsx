@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Component, useState, useEffect, useMemo } from 'react';
+import React, { ChangeEvent, Component, useState, useEffect } from 'react';
 import { ISearchBar } from '../../interface/searchbar';
 import './searchbar.scss';
 
@@ -19,12 +19,13 @@ const SearchBar = () => {
     // console.log('--->', dataValue);
     // console.log('dataEdit', dataEdit);
     // setDataEdit(dataValue);
-    const value = localStorage.getItem('rssearch');
-    if (value) setDataValue(dataValue);
+    // const value = localStorage.getItem('rssearch');
+    // if (value) setDataValue(dataValue);
     return () => {
-      if (!dataValue) return;
-      const value = dataValue;
-      localStorage.setItem('rssearch', value);
+      // if (dataValue) {
+      //   const value = dataValue;
+      //   localStorage.setItem('rssearch', value);
+      // }
       // console.log('===>', dataValue);
       // setDataEdit(dataValue);
       // console.log('dataEdit', dataEdit);

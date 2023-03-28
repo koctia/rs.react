@@ -3,7 +3,7 @@
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import {configDefaults} from "vitest/config";
+import { configDefaults } from 'vitest/config';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,6 +12,12 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     coverage: {
+      exclude: [
+        ...configDefaults.coverage.exclude,
+        'src/**/*.{js,jsx}',
+        'src/interface/',
+        'src/index.tsx',
+      ],
       all: true,
       provider: 'c8',
     },
