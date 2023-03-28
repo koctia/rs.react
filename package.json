@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite",
-    "dev": "vite",
+    "start": "eslint --ext .ts,.tsx src/ && vite",
+    "dev": "eslint --ext .ts,.tsx src/ && vite",
     "build": "eslint src --ext js,ts,tsx && prettier --check . && tsc --noEmit && vite build",
     "format": "prettier --write .",
     "preview": "vite preview",
