@@ -1,4 +1,6 @@
 import React, { Component, createRef, RefObject } from 'react';
+import { useForm } from 'react-hook-form';
+
 import './form.scss';
 import { InputForms } from '../../components/input/InputForms';
 import { SelectForms } from '../../components/select/SelectForms';
@@ -10,13 +12,36 @@ import { CheckboxForms } from '../../components/checkbox/Checkbox';
 import { ICardData } from '../../interface/card';
 import { Card } from '../../components/card/Card';
 
+const Form = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  const myHandleSubmit = (data: ICardData) => {
+    console.log(data);
+  };
+
+  return (
+    <>
+      <h2 className="main__title-form">Forms</h2>
+      <div className="main__form-box">
+        <form className="main__form" onSubmit={handleSubmit(myHandleSubmit)}>
+          <input className="main__btn-submit" type="submit" value="submit" />
+        </form>
+      </div>
+    </>
+  );
+};
+
 interface IFormsParameters {
   info: boolean;
   cards: ICardData[];
   errors: ICardData;
 }
 
-class Form extends Component {
+class FormOld extends Component {
   private namecat: RefObject<HTMLInputElement>;
   private surname: RefObject<HTMLInputElement>;
   private birthday: RefObject<HTMLInputElement>;
