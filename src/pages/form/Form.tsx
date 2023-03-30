@@ -1,4 +1,4 @@
-import React, { Component, createRef, RefObject } from 'react';
+import React, { Component, createRef, RefObject, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import './form.scss';
@@ -17,10 +17,31 @@ const Form = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm();
+    reset,
+  } = useForm<ICardData>({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
+
+  const [newData, setNewData] = useState<ICardData[]>([]);
 
   const myHandleSubmit = (data: ICardData) => {
-    console.log(data);
+    console.log('data', data);
+    const newArray: ICardData[] = newData;
+
+    const newCard: ICardData = {
+      id: newData.length,
+      first_name: data.first_name,
+      last_name: data.last_name,
+      birthday: data.birthday,
+      breeds: data.breeds,
+      // cost: Number(data.cost),
+      gender: data.gender ? 'Female' : 'Male',
+      // place: placeCat(),
+      // url_l: uploadImages(),
+      email: data.email,
+    };
+    newArray.push(newCard);
+    setNewData(newArray);
+    console.log(newData);
+    reset();
   };
 
   return (
@@ -28,8 +49,42 @@ const Form = () => {
       <h2 className="main__title-form">Forms</h2>
       <div className="main__form-box">
         <form className="main__form" onSubmit={handleSubmit(myHandleSubmit)}>
+          <InputForms
+            id="namecat"
+            label="name"
+            type="text"
+            placeholder="enter first name"
+            {...register('first_name', {
+              required: 'Please enter name.',
+              pattern: {
+                value: /[A-ZА-Я]{1}/,
+                message: 'Please capitalize the name.',
+              },
+            })}
+            error={errors.first_name?.message}
+          />
+          <InputForms
+            id="surname"
+            label="surname"
+            type="text"
+            placeholder="enter surname"
+            {...register('last_name', {
+              required: 'Please enter name.',
+              pattern: {
+                value: /[A-ZА-Я]{1}/,
+                message: 'Please capitalize the name.',
+              },
+            })}
+            error={errors.last_name?.message}
+          />
+
           <input className="main__btn-submit" type="submit" value="submit" />
         </form>
+      </div>
+      <div className="main__cards cards">
+        {newData.map((data) => {
+          return <Card key={data.id} {...data} />;
+        })}
       </div>
     </>
   );
