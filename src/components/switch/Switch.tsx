@@ -5,7 +5,7 @@ import { IPropsType } from '../../interface/forms';
 const SwitchForms = forwardRef<HTMLInputElement, IPropsType>(({ id, label, ...props }, ref) => {
   return (
     <div className="onoffswitch">
-      <input className="onoffswitch-checkbox" id={id} {...props} ref={ref} name="onoffswitch" />
+      <input className="onoffswitch-checkbox" id={id} {...props} ref={ref} />
       <label className="onoffswitch-label" htmlFor={id}>
         <span className="onoffswitch-inner"></span>
         <span className="onoffswitch-switch"></span>

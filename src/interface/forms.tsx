@@ -4,4 +4,5 @@ export interface IPropsType {
   type?: string;
   placeholder?: string;
   error?: string;
+  accept?: string;
 }
