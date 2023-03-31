@@ -1,13 +1,13 @@
 import React from 'react';
 import { describe, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 
 import { Home } from '../main/Home';
 import { About } from '../about/About';
 
 describe('Test link from Header', () => {
-  it('home page opener test', async () => {
+  it('home page opener test', () => {
     const RoutesTest = [
       {
         path: '/',
@@ -20,7 +20,7 @@ describe('Test link from Header', () => {
     expect(homePage).toBeTruthy;
   });
 
-  it('about page opener test', async () => {
+  it('about page opener test', () => {
     const RoutesTest = [
       {
         path: '/',

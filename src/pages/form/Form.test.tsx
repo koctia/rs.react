@@ -6,6 +6,10 @@ import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { Form } from './Form';
 
 describe('Form', () => {
+  it('renders without breaking', () => {
+    expect(() => render(<Form />)).not.toThrow();
+  });
+
   it('form page opener test', async () => {
     const RoutesTest = [
       {

@@ -59,7 +59,11 @@ const Form = () => {
       <h2 className="main__title-form">Forms</h2>
       {infoMessage && <div className="main__form-info">The data has been saved</div>}
       <div className="main__form-box">
-        <form className="main__form" onSubmit={handleSubmit(myHandleSubmit)}>
+        <form
+          className="main__form"
+          onSubmit={handleSubmit(myHandleSubmit)}
+          aria-label="form add card"
+        >
           <InputForms
             id="namecat"
             label="name"
