@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 
 import { Home } from '../main/Home';
