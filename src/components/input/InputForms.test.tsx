@@ -11,6 +11,7 @@ describe('InputForms', () => {
     const element = getByRole('textbox');
     expect(element).toContainHTML('');
   });
+
   it('InputForms value data', () => {
     const { getByRole } = render(<InputForms id="test" type="text" />);
     const element = getByRole('textbox');

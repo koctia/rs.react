@@ -5,8 +5,11 @@
     "last_name": "Kesteven",
     "email": "fkesteven0@xrea.com",
     "gender": "Male",
-    "ip_address": "221.237.36.64",
     "cost": 15000,
+    "birthday": "2020-02-03",
+    "breeds": "American Shorthair",
+    "place": "Nursery",
+    "description": "",
     "url_l": "https://live.staticflickr.com/65535/52741636797_0f90653e7e_b.jpg"
   },
   {
