@@ -5,6 +5,7 @@ export interface IPropsType {
   placeholder?: string;
   error?: string;
   accept?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   value?: string;
 }
