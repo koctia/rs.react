@@ -11,6 +11,12 @@
     font-weight: 700;
     margin: 0 0 1rem 0;
   }
+  &__not-data {
+    font-size: 28px;
+    font-weight: 600;
+    color: crimson;
+    margin: 5rem 0 0 0;
+  }
 }
 
 .loader-container {
@@ -35,9 +41,9 @@
 }
 @keyframes spin-anim {
   0% {
-     transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-     transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }

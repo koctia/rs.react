@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-
+import { CheckboxForms } from '../../components/checkbox/Checkbox';
 import './form.scss';
+
+import { ICardData } from '../../interface/card';
+
 import { InputForms } from '../../components/input/InputForms';
 import { SelectForms } from '../../components/select/SelectForms';
 import { SwitchForms } from '../../components/switch/Switch';
 import { RadiosForms } from '../../components/radios/Radios';
 import { LoaderForms } from '../../components/loader/Loader';
-import { CheckboxForms } from '../../components/checkbox/Checkbox';
-
-import { ICardData } from '../../interface/card';
 import { Card } from '../../components/card/Card';
 
 const Form = () => {

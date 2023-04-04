@@ -12,5 +12,6 @@ export interface ICardData {
   birthday?: string;
   breeds?: string;
   place?: string;
+  description?: string;
   upload?: string;
 }
