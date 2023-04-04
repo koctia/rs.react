@@ -12,11 +12,15 @@ function Home() {
   const dataRef = useRef(dataValue);
   const [catsData, setCatsData] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [isNotData, setNotData] = useState(true);
 
   const fetchData = (query: string) => {
     fetchUrl(`${query}`).then((data) => {
       setCatsData(data);
       setLoading(false);
+      console.log(data);
+      if (data.length === 0) setNotData(false);
+      else setNotData(true);
     });
   };
 
@@ -68,10 +72,10 @@ function Home() {
         The cards
       </h2>
       <div className="main__cards cards">
-        {(catsData.length &&
-          catsData.map((data: ICardData) => {
-            return <Card key={data.id} {...data} />;
-          })) || <div className="main__not-data">oops! nothing found for your query</div>}
+        {catsData.map((data: ICardData) => {
+          return <Card key={data.id} {...data} />;
+        })}
+        {isNotData || <div className="main__not-data">oops! nothing found for your query</div>}
       </div>
     </>
   );

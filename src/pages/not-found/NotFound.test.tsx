@@ -9,6 +9,7 @@ describe('NotFound component', () => {
     render(<NotFound />);
     expect(screen.getByTestId('not-found-page')).toBeInTheDocument();
   });
+
   it('Text description in heading', () => {
     render(<NotFound />);
     expect(screen.getByTestId('not-found-page')).toHaveTextContent(/Not Found/i);

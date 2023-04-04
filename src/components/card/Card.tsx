@@ -10,7 +10,7 @@ export const Card = (props: ICardData) => {
   const onClose = () => setOpen(false);
 
   return (
-    <div className="cards__block" data-testid="item-card">
+    <div className="cards__block">
       <div className="cards__box">
         <div className="cards__url">
           <img

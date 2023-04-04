@@ -4,8 +4,9 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Home } from './Home';
-
-import Data from '../../data/mock_data.json';
+import { Card } from '../../components/card/Card';
+import { fetchUrl } from '../../components/api/api';
+import { ICardData } from '../../interface/card';
 
 describe('Home component', () => {
   it('Renders page the test in Home', () => {
@@ -22,10 +23,15 @@ describe('Home component', () => {
     ).toHaveTextContent(/The cards/i);
   });
 
-  it('the correct number of cards should be displayed', () => {
-    render(<Home />);
-    const cards = screen.getAllByTestId('item-card');
-    expect(cards.length).toBe(Data.length);
+  it('the correct number of cards should be displayed', async () => {
+    const data = await fetchUrl('');
+    render(
+      data.map((item: ICardData) => {
+        return <Card key={item.id} {...item} />;
+      })
+    );
+    const cards = screen.getAllByRole('img');
+    expect(cards.length).toBe(data.length);
   });
 
   it('input value space', () => {
