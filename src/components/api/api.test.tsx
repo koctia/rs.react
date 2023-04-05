@@ -1,4 +1,3 @@
-import React from 'react';
 import { describe } from 'vitest';
 
 import { fetchUrl } from './api';

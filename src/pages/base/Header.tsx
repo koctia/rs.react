@@ -1,27 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+
+import { pathName } from '../../utility/pathname';
 
 const setActiveLink = ({ isActive }: { isActive: boolean }) =>
   isActive ? 'header__active-link' : '';
 
 const Header = () => {
-  const [nameRouter, setNameRouter] = useState('Home');
-
-  useEffect(() => {
-    switch (location.pathname) {
-      case '/':
-        setNameRouter('Home');
-        break;
-      case '/about':
-        setNameRouter('About');
-        break;
-      case '/form':
-        setNameRouter('Form');
-        break;
-      default:
-        setNameRouter('Not Page');
-    }
-  }, []);
+  const [nameRouter, setNameRouter] = useState(pathName(location.pathname));
 
   return (
     <header className="header">

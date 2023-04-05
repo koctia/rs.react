@@ -18,7 +18,6 @@ function Home() {
     fetchUrl(`${query}`).then((data) => {
       setCatsData(data);
       setLoading(false);
-      console.log(data);
       if (data.length === 0) setNotData(false);
       else setNotData(true);
     });
@@ -26,6 +25,7 @@ function Home() {
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const symbolChar = event.target.value;
+    dataRef.current = event.target.value;
     if (symbolChar === '') {
       setLoading(true);
       setDataValue(symbolChar);
@@ -41,9 +41,6 @@ function Home() {
       fetchData(`q=${dataValue}`);
     }
   };
-  useEffect(() => {
-    dataRef.current = dataValue;
-  }, [dataValue]);
 
   useEffect(() => {
     dataValue ? fetchData(`q=${dataValue}`) : fetchData('');
