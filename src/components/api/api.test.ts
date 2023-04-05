@@ -12,4 +12,9 @@ describe('API component', () => {
     const data = await fetchUrl('', '');
     expect(data).toMatch('error');
   });
+
+  it('should return the data', async () => {
+    const data = await fetchUrl('far');
+    expect(Array.isArray(data)).toEqual(true);
+  });
 });

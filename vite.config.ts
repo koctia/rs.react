@@ -16,6 +16,7 @@ export default defineConfig({
         ...configDefaults.coverage.exclude,
         'src/**/*.{js,jsx}',
         'src/interface/',
+        'src/data/',
         'src/index.tsx',
       ],
       all: true,
