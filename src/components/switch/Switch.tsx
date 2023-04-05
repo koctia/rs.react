@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import './switch.scss';
+
 import { IPropsType } from '../../interface/forms';
 
 const SwitchForms = forwardRef<HTMLInputElement, IPropsType>(({ id, label, ...props }, ref) => {

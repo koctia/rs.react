@@ -11,6 +11,7 @@ import { SwitchForms } from '../../components/switch/Switch';
 import { RadiosForms } from '../../components/radios/Radios';
 import { LoaderForms } from '../../components/loader/Loader';
 import { Card } from '../../components/card/Card';
+import { TIME_OUT_FOR_FORMS } from '../../data/variables';
 
 const Form = () => {
   const {
@@ -40,7 +41,7 @@ const Form = () => {
     newArray.push(newCard);
     setNewData(newArray);
     setInfoMessage(true);
-    setTimeout(() => setInfoMessage(false), 3000);
+    setTimeout(() => setInfoMessage(false), TIME_OUT_FOR_FORMS);
     reset();
   };
 

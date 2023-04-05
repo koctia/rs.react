@@ -1,5 +1,5 @@
 import React from 'react';
-import { describe, it } from 'vitest';
+import { describe } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { RouterProvider } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';

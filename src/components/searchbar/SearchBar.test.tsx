@@ -1,5 +1,5 @@
 import React from 'react';
-import { describe, it } from 'vitest';
+import { describe } from 'vitest';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 
 import { SearchBar } from './SearchBar';

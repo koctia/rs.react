@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import './checkbox.scss';
+
 import { IPropsType } from '../../interface/forms';
 
 const CheckboxForms = forwardRef<HTMLInputElement, IPropsType>(

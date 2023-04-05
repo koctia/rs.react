@@ -2,7 +2,7 @@ import React from 'react';
 import './card.scss';
 
 import { ICardData } from '../../interface/card';
-import { Modal } from '../../components/modal/modal';
+import { Modal } from '../modal/Modal';
 import { DEFAULT_IMAGE, DEFAULT_URL } from '../../data/variables';
 
 export const Card = (props: ICardData) => {
@@ -15,7 +15,11 @@ export const Card = (props: ICardData) => {
         <div className="cards__url">
           <img
             className="cards__img"
-            src={(props.url_l && DEFAULT_URL + props.url_l) || DEFAULT_IMAGE}
+            src={
+              (props.url_l &&
+                (props.url_l?.includes('blob:') ? props.url_l : DEFAULT_URL + props.url_l)) ||
+              DEFAULT_IMAGE
+            }
           />
         </div>
         <div className="cards__name">

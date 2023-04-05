@@ -1,5 +1,5 @@
 import React from 'react';
-import { describe, it } from 'vitest';
+import { describe } from 'vitest';
 import { fireEvent, render } from '@testing-library/react';
 
 import { RadiosForms } from './Radios';

@@ -15,12 +15,14 @@ function Home() {
   const [isNotData, setNotData] = useState(true);
 
   const fetchData = (query: string) => {
-    fetchUrl(`${query}`).then((data) => {
-      setCatsData(data);
-      setLoading(false);
-      if (data.length === 0) setNotData(false);
-      else setNotData(true);
-    });
+    setTimeout(() => {
+      fetchUrl(`${query}`).then((data) => {
+        setCatsData(data);
+        setLoading(false);
+        if (data.length === 0) setNotData(false);
+        else setNotData(true);
+      });
+    }, 1000);
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

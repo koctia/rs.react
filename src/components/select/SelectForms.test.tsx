@@ -1,9 +1,9 @@
 import React from 'react';
-import { describe, it } from 'vitest';
+import { describe } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { SelectForms } from './SelectForms';
-import userEvent from '@testing-library/user-event';
 
 describe('SelectForms', () => {
   it('should choose option', () => {

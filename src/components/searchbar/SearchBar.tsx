@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
-
 import './searchbar.scss';
+
 import { IPropsType } from '../../interface/forms';
 
 const SearchBar = forwardRef<HTMLInputElement, IPropsType>(({ id, ...props }, ref) => {
