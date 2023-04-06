@@ -13,7 +13,7 @@ describe('API component', () => {
     expect(data).toMatch('error');
   });
 
-  it('should return the data', async () => {
+  it('should return the data in seach "far"', async () => {
     const data = await fetchUrl('far');
     expect(Array.isArray(data)).toEqual(true);
   });
