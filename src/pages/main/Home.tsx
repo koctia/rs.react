@@ -28,14 +28,6 @@ function Home() {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const symbolChar = event.target.value;
     dataRef.current = symbolChar;
-    // if (symbolChar === '') {
-    //   setLoading(true);
-    //   localStorage.setItem('rssearch', '');
-    //   setDataValue(symbolChar);
-    //   fetchData('');
-    // } else {
-    //   setDataValue(symbolChar);
-    // }
     setDataValue(symbolChar);
   };
 
@@ -49,9 +41,6 @@ function Home() {
 
   useEffect(() => {
     dataValue ? fetchData(`q=${dataValue}`) : fetchData('');
-    return () => {
-      // localStorage.setItem('rssearch', dataRef.current);
-    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
