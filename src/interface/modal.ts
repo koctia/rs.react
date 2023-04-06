@@ -1,6 +1,7 @@
 import { ICardData } from './card';
 
 export interface IModal {
-  props: ICardData;
+  id?: number;
+  props?: ICardData[] | undefined;
   onClose?: () => void | undefined;
 }

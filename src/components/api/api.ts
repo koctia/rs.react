@@ -1,4 +1,4 @@
-const SERVER_URL = 'https://rs-react-api.vercel.app/cats';
+import { SERVER_URL } from '../../data/variables';
 
 export const fetchUrl = async (query: string, endpoint = SERVER_URL) => {
   try {

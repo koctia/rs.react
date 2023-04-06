@@ -27,19 +27,22 @@ function Home() {
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const symbolChar = event.target.value;
-    dataRef.current = event.target.value;
-    if (symbolChar === '') {
-      setLoading(true);
-      setDataValue(symbolChar);
-      fetchData('');
-    } else {
-      setDataValue(symbolChar);
-    }
+    dataRef.current = symbolChar;
+    // if (symbolChar === '') {
+    //   setLoading(true);
+    //   localStorage.setItem('rssearch', '');
+    //   setDataValue(symbolChar);
+    //   fetchData('');
+    // } else {
+    //   setDataValue(symbolChar);
+    // }
+    setDataValue(symbolChar);
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       setLoading(true);
+      localStorage.setItem('rssearch', dataRef.current);
       fetchData(`q=${dataValue}`);
     }
   };
@@ -47,7 +50,7 @@ function Home() {
   useEffect(() => {
     dataValue ? fetchData(`q=${dataValue}`) : fetchData('');
     return () => {
-      localStorage.setItem('rssearch', dataRef.current);
+      // localStorage.setItem('rssearch', dataRef.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -61,7 +64,7 @@ function Home() {
       )}
       <SearchBar
         id="search"
-        type="search"
+        type="text"
         placeholder="enter search..."
         onChange={handleChange}
         onKeyDown={handleKeyDown}
