@@ -33,11 +33,13 @@ const cardSlice = createSlice({
     builder
       .addCase(fetchCards.pending, (state) => {
         state.isLoading = true;
+        state.isNotData = false;
         state.error = '';
       })
       .addCase(fetchCards.fulfilled, (state, action) => {
         state.isLoading = false;
         state.cards = action.payload;
+        state.isNotData = state.cards.length === 0 ? true : false;
       })
       .addCase(fetchCards.rejected, () => {});
   },
