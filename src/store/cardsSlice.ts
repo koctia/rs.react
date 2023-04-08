@@ -7,9 +7,15 @@ export const fetchCards = createAsyncThunk('cards/fetchCards', async function (q
   return await fetchUrl(`${query}`);
 });
 
+export const fetchCard = createAsyncThunk('cards/fetchCard', async function (query: string) {
+  return await fetchUrl(`${query}`);
+});
+
 interface IInitialState {
   cards: ICardData[];
+  card: ICardData[];
   isLoading: boolean;
+  isOpen: boolean;
   isNotData: boolean;
   error: string;
   seachCard: string;
@@ -17,18 +23,23 @@ interface IInitialState {
 
 const initialState: IInitialState = {
   cards: [],
+  card: [],
   isLoading: false,
+  isOpen: false,
   isNotData: false,
   error: '',
   seachCard: '',
 };
 
-const cardSlice = createSlice({
+const cardsSlice = createSlice({
   name: 'cards',
   initialState,
   reducers: {
     setSeachCard: (state, action: PayloadAction<string>) => {
       state.seachCard = action.payload;
+    },
+    setOpen(state, action: PayloadAction<boolean>) {
+      state.isOpen = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -44,9 +55,19 @@ const cardSlice = createSlice({
         state.isNotData = state.cards.length === 0 ? true : false;
       })
       .addCase(fetchCards.rejected, () => {});
+
+    builder
+      .addCase(fetchCard.pending, (state) => {
+        state.isLoading = true;
+        state.error = '';
+      })
+      .addCase(fetchCard.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.card = action.payload;
+      });
   },
 });
 
-export const { setSeachCard } = cardSlice.actions;
+export const { setSeachCard, setOpen } = cardsSlice.actions;
 
-export default cardSlice.reducer;
+export default cardsSlice.reducer;

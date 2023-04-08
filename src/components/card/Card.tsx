@@ -1,65 +1,52 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './card.scss';
+
+import { useAppDispatch, useAppSelector } from '../../store/redux';
+import { fetchCard, setOpen } from '../../store/cardsSlice';
 
 import { ICardData } from '../../interface/card';
 import { Modal } from '../modal/Modal';
-import { fetchUrl } from '../api/api';
 import { DEFAULT_IMAGE, DEFAULT_URL } from '../../data/variables';
 
-export const Card = (props: ICardData) => {
-  const [isOpen, setOpen] = useState(false);
-  const [isLoading, setLoading] = useState(false);
-  const [catCard, setCatCard] = useState();
-  const onClose = () => setOpen(false);
+export const Card = (data: ICardData) => {
+  const dispatch = useAppDispatch();
+  const { isOpen } = useAppSelector((state) => state.cards);
 
-  const handleClick = () => {
-    setLoading(true);
-    fetchUrl(`id=${props.id}`).then((data) => {
-      setCatCard(data);
-      setOpen(true);
-      setLoading(false);
-    });
+  const handleClick = async () => {
+    await dispatch(fetchCard(`id=${data.id}`));
+    dispatch(setOpen(true));
   };
 
   return (
-    <>
-      {isLoading && (
-        <div className="loader-container">
-          <div className="spinner"></div>
+    <div id={`${data.id}`} className="cards__block">
+      <div className="cards__box">
+        <div className="cards__url">
+          <img
+            className="cards__img"
+            src={
+              (data.url_l &&
+                (data.url_l.includes('blob:') ? data.url_l : DEFAULT_URL + data.url_l)) ||
+              DEFAULT_IMAGE
+            }
+          />
+        </div>
+        <div className="cards__name">
+          <div className="cards__first-name">{data.first_name}</div>
+          <div className="cards__last-name">{data.last_name}</div>
+        </div>
+        <div className="cards__breeds">{data.breeds}</div>
+        <div className="cards__gender">{data.gender}</div>
+        <div className="cards__cost">{data.cost}</div>
+        {data.url_l?.includes('blob:') && <div className="cards__birthday">{data.birthday}</div>}
+        {data.url_l?.includes('blob:') && <div className="cards__place">{data.place}</div>}
+        {data.url_l?.includes('blob:') && <div className="cards__email">{data.email}</div>}
+      </div>
+      {data.url_l?.includes('blob:') || (
+        <div className="cards__btn" onClick={handleClick}>
+          more
         </div>
       )}
-      <div className="cards__block">
-        <div className="cards__box">
-          <div className="cards__url">
-            <img
-              className="cards__img"
-              src={
-                (props.url_l &&
-                  (props.url_l.includes('blob:') ? props.url_l : DEFAULT_URL + props.url_l)) ||
-                DEFAULT_IMAGE
-              }
-            />
-          </div>
-          <div className="cards__name">
-            <div className="cards__first-name">{props.first_name}</div>
-            <div className="cards__last-name">{props.last_name}</div>
-          </div>
-          <div className="cards__breeds">{props.breeds}</div>
-          <div className="cards__gender">{props.gender}</div>
-          <div className="cards__cost">{props.cost}</div>
-          {props.url_l?.includes('blob:') && (
-            <div className="cards__birthday">{props.birthday}</div>
-          )}
-          {props.url_l?.includes('blob:') && <div className="cards__place">{props.place}</div>}
-          {props.url_l?.includes('blob:') && <div className="cards__email">{props.email}</div>}
-        </div>
-        {props.url_l?.includes('blob:') || (
-          <div className="cards__btn" onClick={handleClick}>
-            more
-          </div>
-        )}
-        {isOpen && <Modal props={catCard} onClose={onClose} />}
-      </div>
-    </>
+      {isOpen && <Modal />}
+    </div>
   );
 };
