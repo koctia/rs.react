@@ -1,14 +1,10 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
 import { fetchUrl } from '../components/api/api';
 import { ICardData } from '../interface/card';
-// import { SERVER_URL } from '../data/variables';
 
 export const fetchCards = createAsyncThunk('cards/fetchCards', async function (query: string) {
   return await fetchUrl(`${query}`);
-  // const response = await fetch(SERVER_URL);
-  // const json = await response.json();
-  // return json;
 });
 
 interface IInitialState {
@@ -16,6 +12,7 @@ interface IInitialState {
   isLoading: boolean;
   isNotData: boolean;
   error: string;
+  seachCard: string;
 }
 
 const initialState: IInitialState = {
@@ -23,12 +20,17 @@ const initialState: IInitialState = {
   isLoading: false,
   isNotData: false,
   error: '',
+  seachCard: '',
 };
 
 const cardSlice = createSlice({
   name: 'cards',
   initialState,
-  reducers: {},
+  reducers: {
+    setSeachCard: (state, action: PayloadAction<string>) => {
+      state.seachCard = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCards.pending, (state) => {
@@ -45,6 +47,6 @@ const cardSlice = createSlice({
   },
 });
 
-export const {} = cardSlice.actions;
+export const { setSeachCard } = cardSlice.actions;
 
 export default cardSlice.reducer;

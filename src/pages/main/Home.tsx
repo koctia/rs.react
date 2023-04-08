@@ -6,18 +6,18 @@ import { Card } from '../../components/card/Card';
 import { ICardData } from '../../interface/card';
 // import { fetchUrl } from '../../components/api/api';
 
-import { fetchCards } from '../../store/cardSlice';
+import { fetchCards, setSeachCard } from '../../store/cardSlice';
 import { useAppDispatch, useAppSelector } from '../../store/redux';
 // import { useDispatch } from 'react-redux';
 
 function Home() {
-  const [dataValue, setDataValue] = useState(localStorage.getItem('rssearch') || '');
-  const dataRef = useRef(dataValue);
+  const dispatch = useAppDispatch();
+  // const [dataValue, setDataValue] = useState(localStorage.getItem('rssearch') || '');
+  // const dataRef = useRef(dataValue);
   // const [catsData, setCatsData] = useState([]);
   // const [isLoading, setLoading] = useState(true);
   // const [isNotData, setNotData] = useState(true);
-  const dispatch = useAppDispatch();
-  const { cards, isLoading, isNotData } = useAppSelector((state) => state.cards);
+  const { cards, isLoading, isNotData, seachCard } = useAppSelector((state) => state.cards);
   // const catsData = useAppSelector((state) => state.cards.cards);
   // const isLoading = useAppSelector((state) => state.cards.isLoading);
   // const isNotData = useAppSelector((state) => state.cards.isNotData);
@@ -34,23 +34,24 @@ function Home() {
   // };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const symbolChar = event.target.value;
-    dataRef.current = symbolChar;
-    setDataValue(symbolChar);
+    // const symbolChar = event.target.value;
+    dispatch(setSeachCard(event.target.value));
+    // dataRef.current = symbolChar;
+    // setDataValue(symbolChar);
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       // setLoading(true);
-      localStorage.setItem('rssearch', dataRef.current);
-      dispatch(fetchCards(`q=${dataValue}`));
+      // localStorage.setItem('rssearch', dataRef.current);
+      dispatch(fetchCards(`q=${seachCard}`));
       // fetchData(`q=${dataValue}`);
     }
   };
 
   useEffect(() => {
     // dispatch(fetchCards(``));
-    dataValue ? dispatch(fetchCards(`q=${dataValue}`)) : dispatch(fetchCards(``));
+    seachCard ? dispatch(fetchCards(`q=${seachCard}`)) : dispatch(fetchCards(``));
     // dataValue ? fetchData(`q=${dataValue}`) : fetchData('');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
@@ -68,7 +69,7 @@ function Home() {
         placeholder="enter search..."
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        value={dataValue}
+        value={seachCard}
       />
       <h2 className="main__title-card" data-testid="home-page">
         The cards
