@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { CheckboxForms } from '../../components/checkbox/Checkbox';
 import './form.scss';
+
+import { addNewCard, setInfoMessage } from '../../store/formSlice';
+import { useAppDispatch, useAppSelector } from '../../store/redux';
 
 import { ICardData } from '../../interface/card';
 
@@ -21,13 +24,12 @@ const Form = () => {
     reset,
   } = useForm<ICardData>({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
 
-  const [newData, setNewData] = useState<ICardData[]>([]);
-  const [infoMessage, setInfoMessage] = useState(false);
+  const dispatch = useAppDispatch();
+  const { cards, infoMessage } = useAppSelector((state) => state.forms);
 
   const myHandleSubmit = (data: ICardData) => {
-    const newArray: ICardData[] = newData;
     const newCard: ICardData = {
-      id: newData.length,
+      id: cards.length,
       first_name: data.first_name,
       last_name: data.last_name,
       birthday: data.birthday,
@@ -38,10 +40,9 @@ const Form = () => {
       url_l: `${uploadImages(data)}`,
       email: data.email,
     };
-    newArray.push(newCard);
-    setNewData(newArray);
-    setInfoMessage(true);
-    setTimeout(() => setInfoMessage(false), TIME_OUT_FOR_FORMS);
+    dispatch(addNewCard(newCard));
+    dispatch(setInfoMessage(true));
+    setTimeout(() => dispatch(setInfoMessage(false)), TIME_OUT_FOR_FORMS);
     reset();
   };
 
@@ -196,7 +197,7 @@ const Form = () => {
         </form>
       </div>
       <div className="main__cards cards">
-        {newData.map((data) => {
+        {cards.map((data) => {
           return <Card key={data.id} {...data} />;
         })}
       </div>

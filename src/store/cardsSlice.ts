@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-
 import { fetchUrl } from '../components/api/api';
 import { ICardData } from '../interface/card';
 
