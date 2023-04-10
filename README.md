@@ -1,4 +1,4 @@
-# React. Components
+# React
 
 **Week 1**
 
