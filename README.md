@@ -30,6 +30,9 @@ npm run lint
 ```
 
 And run the **tests** with the command
+
+**WARNING** The version of the node must be **18** or higher
+
 ```
 npm run coverage
 ```
