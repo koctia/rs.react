@@ -1,0 +1,60 @@
+.main {
+  &__loader-box {
+    position: relative;
+    margin: 0 0 18px 0;
+  }
+  &__loader-label {
+    width: 259px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.26);
+    border-radius: 4px;
+    font-weight: 500;
+    margin: 0 0 18px 0;
+    & span {
+      position: relative;
+      display: inline-block;
+      outline: none;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+      vertical-align: middle;
+      text-align: center;
+      border-radius: 4px;
+      line-height: 22px;
+      height: 40px;
+      padding: 10px 20px;
+      box-sizing: border-box;
+      border: none;
+      margin: 0;
+      transition: background-color 0.2s;
+    }
+    & input[type='file'] {
+      position: absolute;
+      // z-index: -1;
+      opacity: 0;
+      display: block;
+      // width: 0;
+      // height: 0;
+      cursor: pointer;
+    }
+    &:hover {
+      border: 1px solid #fb8730;
+    }
+  }
+  &__loader-span {
+  }
+  &__loader-file {
+  }
+  &__loader-error {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 166%;
+  }
+}
