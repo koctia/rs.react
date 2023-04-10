@@ -19,7 +19,7 @@ describe('Form', () => {
     ).not.toThrow();
   });
 
-  it('form page opener test', async () => {
+  it('form page opener test', () => {
     const RoutesTest = [
       {
         path: '/',
