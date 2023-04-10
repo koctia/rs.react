@@ -10,7 +10,7 @@ describe('Form', () => {
     expect(() => render(<Form />)).not.toThrow();
   });
 
-  it('form page opener test', async () => {
+  it('form page opener test', () => {
     const RoutesTest = [
       {
         path: '/',
@@ -19,7 +19,7 @@ describe('Form', () => {
     ];
     const router = createMemoryRouter(RoutesTest);
     render(<RouterProvider router={router} />);
-    const formsPage = screen.getByText(/Forms/i);
+    const formsPage = screen.getByText(/forms/i);
     expect(formsPage).toBeTruthy;
   });
 
