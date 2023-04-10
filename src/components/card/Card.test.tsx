@@ -2,6 +2,9 @@ import React from 'react';
 import { describe } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
+import { Provider } from 'react-redux';
+import { store } from '../../store';
+
 import { Card } from './Card';
 
 const dataImg = {
@@ -34,13 +37,21 @@ const dataNoImg = {
 
 describe('Item card', () => {
   it('should draw the Card component (img)', () => {
-    render(<Card {...dataImg} />);
+    render(
+      <Provider store={store}>
+        <Card {...dataImg} />
+      </Provider>
+    );
     const itemCard = screen.getByRole('img');
     expect(itemCard).toBeInTheDocument();
   });
 
   it('should draw the Card component (noimg)', () => {
-    render(<Card {...dataNoImg} />);
+    render(
+      <Provider store={store}>
+        <Card {...dataNoImg} />
+      </Provider>
+    );
     const itemCard = screen.getByRole('img');
     expect(itemCard).toBeInTheDocument();
   });

@@ -17,6 +17,7 @@ export default defineConfig({
         'src/**/*.{js,jsx}',
         'src/interface/',
         'src/data/',
+        'src/store/',
         'src/index.tsx',
       ],
       all: true,

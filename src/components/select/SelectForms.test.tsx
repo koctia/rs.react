@@ -3,11 +3,18 @@ import { describe } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import { Provider } from 'react-redux';
+import { store } from '../../store';
+
 import { SelectForms } from './SelectForms';
 
 describe('SelectForms', () => {
   it('should choose option', () => {
-    render(<SelectForms id="breed" label="breed" />);
+    render(
+      <Provider store={store}>
+        <SelectForms id="breed" label="breed" />
+      </Provider>
+    );
     expect((screen.getByRole('option', { name: '' }) as HTMLOptionElement).selected).toBe(true);
     expect(screen.getAllByRole('option').length).toBe(9);
     userEvent.selectOptions(

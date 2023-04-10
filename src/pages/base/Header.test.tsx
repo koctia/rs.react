@@ -3,6 +3,9 @@ import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 
+import { Provider } from 'react-redux';
+import { store } from '../../store';
+
 import { Home } from '../main/Home';
 import { About } from '../about/About';
 
@@ -15,7 +18,11 @@ describe('Test link from Header', () => {
       },
     ];
     const router = createMemoryRouter(RoutesTest);
-    render(<RouterProvider router={router} />);
+    render(
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    );
     const homePage = screen.getByText(/the cards/i);
     expect(homePage).toBeTruthy;
   });
@@ -28,7 +35,11 @@ describe('Test link from Header', () => {
       },
     ];
     const router = createMemoryRouter(RoutesTest);
-    render(<RouterProvider router={router} />);
+    render(
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    );
     const aboutPage = screen.getByText(/About/i);
     expect(aboutPage).toBeTruthy;
   });
