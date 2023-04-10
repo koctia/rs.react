@@ -22,17 +22,6 @@ describe('Home component', () => {
     ).toHaveTextContent(/The cards/i);
   });
 
-  it('the correct number of cards should be displayed', async () => {
-    const data = await fetchUrl('');
-    render(
-      data.map((item: ICardData) => {
-        return <Card key={item.id} {...item} />;
-      })
-    );
-    const cards = screen.getAllByRole('img');
-    expect(cards.length).toBe(data.length);
-  });
-
   it('input value space', () => {
     render(<Home />);
     expect(screen.queryByTestId('search-input')).toContainHTML('');

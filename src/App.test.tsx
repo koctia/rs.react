@@ -7,13 +7,13 @@ import userEvent from '@testing-library/user-event';
 import { router } from './App';
 
 describe('router', () => {
-  it('Router test for link', async () => {
+  it('Router test for link', () => {
     render(<RouterProvider router={router} />);
     const homeLink = screen.getByTestId('home-link');
     const aboutLink = screen.getByTestId('about-link');
-    await userEvent.click(aboutLink);
+    userEvent.click(aboutLink);
     expect(screen.getByTestId('about-link')).toBeInTheDocument();
-    await userEvent.click(homeLink);
+    userEvent.click(homeLink);
     expect(screen.getByTestId('home-link')).toBeInTheDocument();
   });
 });

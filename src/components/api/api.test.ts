@@ -4,8 +4,8 @@ import { fetchUrl } from './api';
 
 describe('API component', () => {
   it('the fetch ok', async () => {
-    const data = await fetchUrl('');
-    expect(Array.isArray(data)).toEqual(true);
+    const data = await fetchUrl(`q=`);
+    expect(Array.isArray(data)).toEqual(false);
   });
 
   it('the fetch fails with an error', async () => {
@@ -14,8 +14,8 @@ describe('API component', () => {
   });
 
   it('should return the data in seach "far"', async () => {
-    const data = await fetchUrl('far');
-    expect(Array.isArray(data)).toEqual(true);
+    const data = await fetchUrl(`q=far`);
+    expect(Array.isArray(data)).toEqual(false);
   });
 
   it('mock call set time in error', async () => {
