@@ -1,4 +1,4 @@
-# React
+# RS React task
 
 **Clone** the project to yourself
 ```
