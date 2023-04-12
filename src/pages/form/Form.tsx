@@ -14,7 +14,7 @@ import { SwitchForms } from '../../components/switch/Switch';
 import { RadiosForms } from '../../components/radios/Radios';
 import { LoaderForms } from '../../components/loader/Loader';
 import { Card } from '../../components/card/Card';
-import { TIME_OUT_FOR_FORMS } from '../../data/variables';
+import { TIME_OUT_FOR_FORMS, UPPER_FIRST_LETTER, VALIDATE_EMAIL } from '../../data/variables';
 
 const Form = () => {
   const {
@@ -74,7 +74,7 @@ const Form = () => {
             {...register('first_name', {
               required: 'Please enter name.',
               pattern: {
-                value: /[A-ZА-Я]{1}/,
+                value: UPPER_FIRST_LETTER,
                 message: 'Please capitalize the name.',
               },
             })}
@@ -88,7 +88,7 @@ const Form = () => {
             {...register('last_name', {
               required: 'Please enter name.',
               pattern: {
-                value: /[A-ZА-Я]{1}/,
+                value: UPPER_FIRST_LETTER,
                 message: 'Please capitalize the name.',
               },
             })}
@@ -185,8 +185,7 @@ const Form = () => {
             {...register('email', {
               required: 'Please enter email.',
               pattern: {
-                value:
-                  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu,
+                value: VALIDATE_EMAIL,
                 message: 'Please enter valid email address.',
               },
             })}
