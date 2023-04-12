@@ -2,6 +2,9 @@ import { describe, vi } from 'vitest';
 
 import { fetchUrl } from './api';
 
+const RESOLVE_TIME = 200;
+let fetchMock = global.fetch;
+
 describe('API component', () => {
   it('the fetch ok', async () => {
     const data = await fetchUrl('');
@@ -27,14 +30,14 @@ describe('API component', () => {
         }),
       0
     );
-    await new Promise((resolve) => setTimeout(resolve, 200));
+    await new Promise((resolve) => setTimeout(resolve, RESOLVE_TIME));
     expect(mockFunc.mock.calls.length).toBe(1);
   });
 
   it('calls data', async () => {
     const fetchFn = vi.fn(() => false);
     const mockFetch = Promise.resolve({
-      json: () =>
+      card: () =>
         Promise.resolve({
           id: 1,
           name: 'Far',
@@ -43,9 +46,8 @@ describe('API component', () => {
           price: 15000,
         }),
     });
-    global.fetch = vi.fn().mockImplementation(() => mockFetch);
-    vi.spyOn(global, 'fetch');
+    fetchMock = vi.fn().mockImplementation(() => mockFetch);
     fetchFn();
-    expect(global.fetch).toHaveBeenCalledTimes(0);
+    expect(fetchMock).toHaveBeenCalledTimes(0);
   });
 });
