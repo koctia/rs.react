@@ -1,0 +1,49 @@
+.main {
+  &__title {
+    text-align: center;
+    font-size: 21px;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+  }
+  &__title-card {
+    text-align: center;
+    font-size: 21px;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+  }
+  &__not-data {
+    font-size: 28px;
+    font-weight: 600;
+    color: crimson;
+    margin: 5rem 0 0 0;
+  }
+}
+
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, .1);
+  z-index: 8;
+}
+.spinner {
+  width: 72px;
+  height: 72px;
+  border: 8px solid;
+  border-color: #fb8730 transparent #fb8730 transparent;
+  border-radius: 50%;
+  animation: spin-anim 1.2s linear infinite;
+}
+@keyframes spin-anim {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
