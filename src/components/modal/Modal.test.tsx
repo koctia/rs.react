@@ -37,7 +37,6 @@ describe('Modal component', () => {
       </Provider>
     );
     const itemCard = screen.getByRole('img');
-    // console.log(itemCard);
     expect(itemCard).toBeInTheDocument();
   });
 });
