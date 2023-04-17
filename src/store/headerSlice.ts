@@ -6,7 +6,7 @@ interface IInitialState {
 }
 
 const initialState: IInitialState = {
-  text: pathName(location.pathname),
+  text: pathName('/'),
 };
 
 const headerSlice = createSlice({
