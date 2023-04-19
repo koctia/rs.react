@@ -10,3 +10,10 @@ export interface IPropsType {
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   value?: string;
 }
+
+export interface IPropsSelect {
+  id: string;
+  error?: string;
+  label?: string;
+  name?: string;
+}

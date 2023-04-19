@@ -2,9 +2,9 @@ import React, { forwardRef } from 'react';
 import './selectforms.scss';
 
 import { Data } from '../../data/breeds';
-import { IPropsType } from '../../interface/forms';
+import { IPropsSelect } from '../../interface/forms';
 
-const SelectForms = forwardRef<HTMLSelectElement, IPropsType>(
+const SelectForms = forwardRef<HTMLSelectElement, IPropsSelect>(
   ({ id, label, error, ...props }, ref) => {
     return (
       <div className="main__form-breeds">
