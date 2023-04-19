@@ -100,17 +100,16 @@
     font-weight: 600;
     text-transform: uppercase;
     line-height: 125%;
-    color: #FFFFFF;
+    color: #ffffff;
     cursor: pointer;
   }
   &__btn:hover {
     background: #007070;
   }
   &__btn_active {
-    background: #FFB42E;
+    background: #ffb42e;
   }
   &__btn_active:hover {
     background: #eca01b;
   }
-
 }

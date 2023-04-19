@@ -1,79 +1,81 @@
 .modal {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100vw;
-   height: 100vh;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   background: rgba(0, 0, 0, .6);
-   z-index: 11;
-   &__box {
-      width: 48rem;
-      font-size: 18px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 11;
+  &__box {
+    width: 48rem;
+    font-size: 18px;
+    border: 1px solid #d3d4d5;
+    border-radius: 5px 5px 0 0;
+    background: #ffffff;
+    padding: 11px 18px 24px;
+  }
+  &__text {
+    font-weight: 600;
+  }
+  &__close {
+    display: flex;
+    justify-content: flex-end;
+    & div {
       border: 1px solid #d3d4d5;
-      border-radius: 5px 5px 0 0;
-      background: #ffffff;
-      padding: 11px 18px 24px;
-   }
-   &__text {
-      font-weight: 600;
-   }
-   &__close {
-      display: flex;
-      justify-content: flex-end;
-      & div {
-         border: 1px solid #d3d4d5;
-         padding: 8px;
-         cursor: pointer;
-      }
-   }
-   &__block {
-      display: flex;
-   }
-   &__url {
-      margin: 0 8px 0 0;
-   }
-   &__img {
-      width: 300px;
-      height: 250px;
-      overflow: hidden;
-      object-fit: cover;
-   }
-   &__info {}
-   &__name {
-      display: flex;
-      margin: 0 0 5px 0;
-   }
-   &__first-name {
-      margin: 0 4px;
-   }
-   &__last-name {}
-   &__birthday {
-      margin: 0 0 5px 0;
-   }
-   &__breeds {
-      margin: 0 0 5px 0;
-   }
-   &__gender {
-      margin: 0 0 5px 0;
-   }
-   &__cost {
-      margin: 0 0 5px 0;
-      &::after {
-         content: '\20BD';
-         font-size: 18px;
-         margin: 0 0 0 4px;
-      }
-   }
-   &__place {
-      margin: 0 0 5px 0;
-   }
-   &__email {
-      margin: 0 0 5px 0;
-   }
-   &__description {
-      margin: 0 0 5px 0;
-   }
+      padding: 8px;
+      cursor: pointer;
+    }
+  }
+  &__block {
+    display: flex;
+  }
+  &__url {
+    margin: 0 8px 0 0;
+  }
+  &__img {
+    width: 300px;
+    height: 250px;
+    overflow: hidden;
+    object-fit: cover;
+  }
+  &__info {
+  }
+  &__name {
+    display: flex;
+    margin: 0 0 5px 0;
+  }
+  &__first-name {
+    margin: 0 4px;
+  }
+  &__last-name {
+  }
+  &__birthday {
+    margin: 0 0 5px 0;
+  }
+  &__breeds {
+    margin: 0 0 5px 0;
+  }
+  &__gender {
+    margin: 0 0 5px 0;
+  }
+  &__cost {
+    margin: 0 0 5px 0;
+    &::after {
+      content: '\20BD';
+      font-size: 18px;
+      margin: 0 0 0 4px;
+    }
+  }
+  &__place {
+    margin: 0 0 5px 0;
+  }
+  &__email {
+    margin: 0 0 5px 0;
+  }
+  &__description {
+    margin: 0 0 5px 0;
+  }
 }

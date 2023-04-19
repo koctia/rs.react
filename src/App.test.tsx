@@ -1,19 +1,21 @@
 import React from 'react';
 import { describe } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { RouterProvider } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 
 import { Provider } from 'react-redux';
 import { store } from './store';
 
-import { router } from './App';
+import { App } from './App';
 
 describe('router', () => {
   it('Router test for link', () => {
     render(
       <Provider store={store}>
-        <RouterProvider router={router} />
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>
       </Provider>
     );
     const homeLink = screen.getByTestId('home-link');
@@ -22,5 +24,16 @@ describe('router', () => {
     expect(screen.getByTestId('about-link')).toBeInTheDocument();
     userEvent.click(homeLink);
     expect(screen.getByTestId('home-link')).toBeInTheDocument();
+  });
+
+  it('Error page test', () => {
+    render(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/ghjguyl']}>
+          <App />
+        </MemoryRouter>
+      </Provider>
+    );
+    expect(screen.getByTestId('not-found-page')).toBeInTheDocument();
   });
 });
