@@ -4,7 +4,7 @@ import express from 'express';
 import { fileURLToPath } from 'url';
 import { createServer } from 'vite';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const PORT = 3001;
 
@@ -23,7 +23,7 @@ async function createViteServer() {
     const url = req.originalUrl;
 
     try {
-      let stamp = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
+      let stamp = fs.readFileSync(path.resolve(dirname, 'index.html'), 'utf-8');
       stamp = await viteServer.transformIndexHtml(url, stamp);
       const tagBody = stamp.split('<!--ssr-body-->');
 
