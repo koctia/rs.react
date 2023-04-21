@@ -1,7 +1,7 @@
 {
   "name": "rs.react",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "start": "npm run lint && set \"NODE_ENV=production\" && ts-node server.tsx",
@@ -16,8 +16,8 @@
     "old-preview": "vite preview",
 
     "cypress": "cypress open",
-    "coverage:e2e": "cypress run --e2e && nyc report --reporter=text-summary",
-    "coverage:screen": "npx rimraf coverage && npx cypress run --e2e && npx nyc report --reporter=text-summary"
+    "e2e": "rimraf coverage && cypress run --e2e && nyc report --reporter=text-summary",
+    "old-cypress:screen": "npx rimraf coverage && npx cypress run --e2e && npx nyc report --reporter=text-summary"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",

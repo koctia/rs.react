@@ -1,4 +1,4 @@
-describe('routs', () => {
+describe('routs menu', () => {
   it('should routs menu', () => {
     cy.visit('/');
     cy.contains('About').click();
