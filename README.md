@@ -1,5 +1,7 @@
 # RS React task
 
+**WARNING** The version of the node must be **18** or higher
+
 **Clone** the project to yourself
 
 ```
@@ -24,6 +26,8 @@ Then, in order to **start** the project, it is necessary to execute
 npm start
 ```
 
+And open link http://localhost:3001
+
 To verify, to start **eslint**, you need to type the command
 
 ```
@@ -32,8 +36,16 @@ npm run lint
 
 And run the **tests** with the command
 
-**WARNING** The version of the node must be **18** or higher
-
 ```
 npm run coverage
+```
+
+And testing **e2e**
+
+The project must be running for the test
+
+```
+npm start
+
+npm run e2e
 ```
