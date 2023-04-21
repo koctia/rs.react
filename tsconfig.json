@@ -15,7 +15,6 @@
     "skipLibCheck": true,
     "baseUrl": "./",
     "resolveJsonModule": true,
-    "sourceMap": false
   },
   "include": ["vite.config.ts", "./src/**/*", "styled.d.ts", "server.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }],
