@@ -6,18 +6,14 @@
   "scripts": {
     "start": "npm run lint && set \"NODE_ENV=production\" && ts-node server.tsx",
     "dev": "nodemon",
-    "test": "vitest",
+    "build": "eslint src --ext js,ts,tsx && prettier --check . && tsc --noEmit && vite build",
+    "format": "prettier --write .",
+    "preview": "vite preview",
     "lint": "eslint --ext .ts,.tsx src/",
+    "test": "vitest",
     "coverage": "vitest run --coverage",
-
-    "old-dev": "eslint --ext .ts,.tsx src/ && vite",
-    "old-build": "eslint src --ext js,ts,tsx && prettier --check . && tsc --noEmit && vite build",
-    "old-format": "prettier --write .",
-    "old-preview": "vite preview",
-
     "cypress": "cypress open",
-    "e2e": "rimraf coverage && cypress run --e2e && nyc report --reporter=text-summary",
-    "old-cypress:screen": "npx rimraf coverage && npx cypress run --e2e && npx nyc report --reporter=text-summary"
+    "e2e": "rimraf coverage && cypress run --e2e && nyc report --reporter=text-summary"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
