@@ -3,9 +3,11 @@ import { describe } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
 import { Provider } from 'react-redux';
-import { store } from '../../store';
+import { createAppStore } from '../../store';
 
 import { About } from './About';
+
+const store = createAppStore();
 
 describe('About component', () => {
   it('Renders page the test in About', () => {

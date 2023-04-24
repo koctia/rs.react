@@ -5,7 +5,7 @@ interface IInitialState {
   text: string;
 }
 
-const initialState: IInitialState = {
+export const initialState: IInitialState = {
   text: pathName('/'),
 };
 

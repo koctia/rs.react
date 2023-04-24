@@ -1,13 +1,11 @@
 describe('about test', () => {
-  beforeEach(() => {
-    cy.visit('/about');
-  });
-
   it('should get to the page about', () => {
+    cy.visit('/about');
     cy.get('div');
   });
 
   it('should be name page', () => {
+    cy.visit('/about');
     cy.get('.main__title-about').should('contain', 'About');
   });
 

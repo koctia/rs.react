@@ -3,13 +3,15 @@ import path from 'path';
 import express from 'express';
 import { fileURLToPath } from 'url';
 import { createServer } from 'vite';
+import serveStatic from 'serve-static';
+import compression from 'compression';
 
-const dirname = path.dirname(fileURLToPath(import.meta.url));
-
-const PORT = 3001;
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const PORT = process.env.PORT || 3001;
+const enviroment = process.env.NODE_ENV || 'development';
 
 async function createViteServer() {
-  let didError = false;
+  const isProd = enviroment === 'production';
   const app = express();
 
   const viteServer = await createServer({
@@ -19,38 +21,28 @@ async function createViteServer() {
 
   app.use(viteServer.middlewares);
 
+  if (isProd) {
+    app.use('/assets', express.static(path.resolve(__dirname, 'dist/client/assets')));
+    app.use(compression());
+    app.use(
+      serveStatic(path.resolve(__dirname, 'dist/client'), {
+        index: false,
+      })
+    );
+  }
+
   app.use('*', async (req, res, next) => {
     const url = req.originalUrl;
-
     try {
-      let stamp = fs.readFileSync(path.resolve(dirname, 'index.html'), 'utf-8');
+      const incFile = isProd
+        ? path.resolve(__dirname, 'dist/client/index.html')
+        : path.resolve(__dirname, 'index.html');
+      let stamp = fs.readFileSync(incFile, 'utf-8');
       stamp = await viteServer.transformIndexHtml(url, stamp);
-      const tagBody = stamp.split('<!--ssr-body-->');
-
-      const { render } = await viteServer.ssrLoadModule('/src/server.tsx');
-      const { pipe } = await render(url, {
-        onShellReady() {
-          res.statusCode = 200;
-          res.setHeader('content-type', 'text/html');
-          res.write(tagBody[0]);
-          pipe(res);
-        },
-        onAllReady() {
-          res.statusCode = didError ? 500 : 200;
-          res.write(tagBody[1]);
-          res.end();
-        },
-        onShellError(error: Error) {
-          res.statusCode = 500;
-          res.setHeader('content-type', 'text/html');
-          res.send('<h2>Something went wrong</h2>');
-          console.error(error);
-        },
-        onError(error: Error) {
-          didError = true;
-          console.error(error);
-        },
-      });
+      const prodBuildPath = path.join(__dirname, './dist/server/server.js');
+      const devBuildPath = path.resolve(__dirname, 'src/server.tsx');
+      const { render } = await viteServer.ssrLoadModule(isProd ? prodBuildPath : devBuildPath);
+      await render(url, res, stamp);
     } catch (error) {
       if (error instanceof Error) {
         viteServer.ssrFixStacktrace(error);

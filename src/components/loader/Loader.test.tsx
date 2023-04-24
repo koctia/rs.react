@@ -4,9 +4,11 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Provider } from 'react-redux';
-import { store } from '../../store';
+import { createAppStore } from '../../store';
 
 import { LoaderForms } from './Loader';
+
+const store = createAppStore();
 
 describe('LoaderForms', () => {
   it('upload files', () => {

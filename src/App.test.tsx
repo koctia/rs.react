@@ -5,9 +5,11 @@ import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 
 import { Provider } from 'react-redux';
-import { store } from './store';
+import { createAppStore } from './store';
 
 import { App } from './App';
+
+const store = createAppStore();
 
 describe('router', () => {
   it('Router test for link', () => {

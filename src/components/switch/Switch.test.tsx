@@ -3,9 +3,11 @@ import { describe } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Provider } from 'react-redux';
-import { store } from '../../store';
+import { createAppStore } from '../../store';
 
 import { SwitchForms } from './Switch';
+
+const store = createAppStore();
 
 describe('SwitchForms', () => {
   it('should checkbox is checked/unchecked', () => {

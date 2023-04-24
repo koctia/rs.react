@@ -4,9 +4,11 @@ import { render, screen } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
-import { store } from '../../store';
+import { createAppStore } from '../../store';
 
 import { Form } from './Form';
+
+const store = createAppStore();
 
 describe('Form', () => {
   it('renders without breaking', () => {

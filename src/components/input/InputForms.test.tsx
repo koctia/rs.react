@@ -3,9 +3,11 @@ import { describe } from 'vitest';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 
 import { Provider } from 'react-redux';
-import { store } from '../../store';
+import { createAppStore } from '../../store';
 
 import { InputForms } from './InputForms';
+
+const store = createAppStore();
 
 describe('InputForms', () => {
   afterEach(cleanup);

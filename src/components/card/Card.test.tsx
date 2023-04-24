@@ -3,9 +3,11 @@ import { describe } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
 import { Provider } from 'react-redux';
-import { store } from '../../store';
+import { createAppStore } from '../../store';
 
 import { Card } from './Card';
+
+const store = createAppStore();
 
 const dataImg = {
   id: 1,

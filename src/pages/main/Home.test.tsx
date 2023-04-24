@@ -3,12 +3,14 @@ import { describe } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Provider } from 'react-redux';
-import { store } from '../../store';
+import { createAppStore } from '../../store';
 
 import { Home } from './Home';
 import { Card } from '../../components/card/Card';
 import { fetchUrl } from '../../components/api/api';
 import { ICardData } from '../../interface/card';
+
+const store = createAppStore();
 
 describe('Home component', () => {
   it('Renders page the test in Home', () => {

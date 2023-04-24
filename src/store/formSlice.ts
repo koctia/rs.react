@@ -6,7 +6,7 @@ interface IInitialState {
   infoMessage: boolean;
 }
 
-const initialState: IInitialState = {
+export const initialState: IInitialState = {
   cards: [],
   infoMessage: false,
 };

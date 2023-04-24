@@ -4,10 +4,12 @@ import { render, screen } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
-import { store } from '../../store';
+import { createAppStore } from '../../store';
 
 import { Home } from '../main/Home';
 import { About } from '../about/About';
+
+const store = createAppStore();
 
 describe('Test link from Header', () => {
   it('home page opener test', () => {
