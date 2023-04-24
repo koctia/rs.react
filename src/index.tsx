@@ -16,10 +16,6 @@ declare global {
 const store = createAppStore(window.__PRELOADED_STATE__);
 delete window.__PRELOADED_STATE__;
 
-window.addEventListener('load', () => {
-  document.getElementById('preloaded-state')?.remove();
-});
-
 hydrateRoot(
   document.getElementById('root') as HTMLElement,
   <React.StrictMode>
