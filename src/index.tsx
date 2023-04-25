@@ -13,6 +13,7 @@ declare global {
     __PRELOADED_STATE__?: object;
   }
 }
+
 const store = createAppStore(window.__PRELOADED_STATE__);
 delete window.__PRELOADED_STATE__;
 

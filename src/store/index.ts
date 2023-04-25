@@ -19,6 +19,7 @@ export const createAppStore = (initialState?: PreloadedState<RootState>, isServe
   setupListeners(store.dispatch);
   return store;
 };
+
 export type AppStore = ReturnType<typeof createAppStore>;
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppDispatch = AppStore['dispatch'];
