@@ -1,0 +1,72 @@
+.main {
+  &__form-radios {
+    margin: 0 0 18px 0;
+    & label {
+      cursor: pointer;
+    }
+  }
+}
+.radios-label {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 166%;
+  color: rgba(73, 80, 87, 0.6);
+}
+
+input[type='radio'] {
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+  margin: 0 0.4em 0.4em 0;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid #aaaaaa;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+input[type='radio'] {
+  border-radius: 100%;
+}
+
+input[type='radio']:not(:disabled):hover {
+  border: 1px solid #f17c00;
+}
+
+input[type='radio']:active:not(:disabled) {
+  border: 1px solid #f17c00;
+}
+
+input[type='radio']:checked {
+  border: 1px solid #f17c00;
+}
+
+input[type='radio']:checked:before {
+  display: block;
+  height: 14px;
+  width: 14px;
+  position: relative;
+  left: 2px;
+  top: 2px;
+  background: #f17c00;
+  border-radius: 100%;
+  content: '';
+}
+
+input:disabled {
+  background: rgba(0, 0, 0, 0.3);
+  &:checked {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+  }
+}
+
+input[type='radio']:disabled:checked:before {
+  content: '';
+  display: block;
+  height: 14px;
+  width: 14px;
+  position: relative;
+  left: 2px;
+  top: 2px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 100%;
+}
